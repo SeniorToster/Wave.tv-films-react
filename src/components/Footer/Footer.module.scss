@@ -1,0 +1,22 @@
+.bar {
+  border-top: 1px solid #e5e5e5;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  & a {
+    color: #f1faee;
+    font-weight: 700;
+    padding: 15px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    & svg {
+      color: #e63946;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

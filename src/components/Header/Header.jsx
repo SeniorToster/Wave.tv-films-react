@@ -5,14 +5,17 @@ import styles from './Header.module.scss';
 function Header() {
   return (
     <header className={styles.bar}>
-      <BsFilm />
-      <div>
-        wave.
-        <span>
-          tv
-          <sup>beta 0.1</sup>
-        </span>
-      </div>
+      <a className={styles.bar__logo} href='./'>
+        <BsFilm />
+        <p>
+          wave.
+          <span>
+            tv
+            <sup>beta 0.1</sup>
+          </span>
+        </p>
+      </a>
+
       <CgProfile className={styles.bar__profile} />
     </header>
   );

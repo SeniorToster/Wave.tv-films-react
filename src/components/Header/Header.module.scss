@@ -5,20 +5,30 @@
   justify-content: flex-start;
   align-items: center;
   border-bottom: 1px solid #e5e5e5;
-  & div {
-    color: #f1faee;
-    font-weight: 700;
-    padding: 15px;
-    font-size: 26px;
-    & span {
-      color: #e63946;
-      & sup {
-        font-weight: 400;
-        padding-left: 6px;
-        font-size: 10px;
+  &__logo {
+    display: flex;
+    align-items: center;
+    transition: scale 0.2s ease-in-out;
+    &:hover {
+      scale: 1.1;
+      transition: scale 0.2s ease-in-out;
+    }
+    & p {
+      color: #f1faee;
+      font-weight: 700;
+      padding: 15px;
+      font-size: 26px;
+      & span {
+        color: #e63946;
+        & sup {
+          font-weight: 400;
+          padding-left: 6px;
+          font-size: 10px;
+        }
       }
     }
   }
+
   & svg {
     color: #e63946;
     width: 30px;

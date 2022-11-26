@@ -29,7 +29,6 @@ function Main() {
   }, []);
 
   const searchHandle = text => {
-    console.log(text);
     fetch(
       `https://kinopoiskapiunofficial.tech/api/v2.2/films?keyword=${text}`,
       {

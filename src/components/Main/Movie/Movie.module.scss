@@ -1,17 +1,86 @@
 .wrapper {
   margin-bottom: 20px;
-  & img {
-    border-radius: 8px;
-    margin-bottom: 8px;
-    min-width: 227px;
-    min-height: 340px;
+
+  &__poster {
+    position: relative;
+    &:hover > .wrapper__icons > svg {
+      opacity: 1;
+      scale: 1;
+      transition: all 0.2s ease-in-out;
+    }
+    &:hover .wrapper__hoverInfo {
+      opacity: 1;
+      scale: 1;
+      transition: all 0.2s ease-in-out;
+    }
+    & > img {
+      border-radius: 8px;
+      margin-bottom: 8px;
+      min-width: 227px;
+      min-height: 340px;
+      transition: all 0.2s ease-in-out;
+    }
+    &:hover > img {
+      transition: all 0.2s ease-in-out;
+      filter: brightness(10%);
+      scale: 1.03;
+    }
   }
-  & p {
+
+  &__icons {
+    & > svg {
+      position: absolute;
+      z-index: 3;
+      top: 8px;
+      right: 8px;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      color: #f1faee;
+      opacity: 0;
+      scale: 0.5;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        color: #e63946;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+  }
+
+  &__hoverInfo {
+    position: absolute;
+    z-index: 3;
+    bottom: 8px;
+    left: 8px;
+    opacity: 0;
+    scale: 0.5;
+    transition: all 0.2s ease-in-out;
+    & > h3 {
+      color: #f1faee;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      & > span {
+        color: #e63946;
+      }
+    }
+    & > p {
+      font-weight: 400;
+      color: #f1faee99;
+      font-size: 18px;
+      & > span {
+        font-weight: 700;
+        color: #f1faee;
+      }
+    }
+  }
+
+  & > p {
     color: #f1faee;
     font-size: 18px;
     font-weight: 700;
   }
-  & small {
+  & > small {
     color: #f1faee99;
   }
 }

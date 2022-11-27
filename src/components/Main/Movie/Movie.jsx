@@ -3,16 +3,28 @@ import styles from './Movie.module.scss';
 
 function Movie({
   nameRu,
+  nameOriginal,
   countries,
   genres,
   ratingKinopoisk,
   year,
   posterUrlPreview,
-  type,
+  type = 'NONE',
   duration,
+  premiereRu,
 }) {
   let country = 'неизвестно';
   let genre = 'неизвестно';
+  const types = [
+    { typeUS: 'FILM', typeRU: 'Фильм' },
+    { typeUS: 'TV_SERIES', typeRU: 'Сериал' },
+    { typeUS: 'TV_SHOW', typeRU: 'Ток-шоу' },
+    { typeUS: 'MINI_SERIES', typeRU: 'Мини-сериал' },
+    { typeUS: 'NONE', typeRU: '' },
+  ];
+
+  const typeArrRU = types.filter(typeFilm => typeFilm.typeUS === type);
+  const { typeRU } = typeArrRU[0];
 
   if (countries.length) ({ country } = countries[0]);
 
@@ -26,21 +38,30 @@ function Movie({
           <BsBookmark />
         </div>
         <div className={styles.wrapper__hoverInfo}>
-          <h3>
-            Рейтинг: <span>{ratingKinopoisk}</span>
-          </h3>
+          {!!premiereRu ? (
+            <h3>
+              Премьера: <span>{premiereRu.split('-').reverse().join('.')}</span>
+            </h3>
+          ) : (
+            <h3>
+              Рейтинг: {ratingKinopoisk ? <span>{ratingKinopoisk}</span> : '–'}
+            </h3>
+          )}
+          {typeRU && <p>{typeRU}</p>}
           <p>
             Страна: <span>{country}</span>
           </p>
           <p>
             Жанр: <span>{genre}</span>
           </p>
-          {/*  <p>
-            Время: <span>{duration} минут</span>
-          </p> */}
+          {duration && (
+            <p>
+              Время: <span>{duration} минут</span>
+            </p>
+          )}
         </div>
       </div>
-      <p>{nameRu}</p>
+      <p>{nameRu || nameOriginal}</p>
       <small>{year}</small>
     </div>
   );

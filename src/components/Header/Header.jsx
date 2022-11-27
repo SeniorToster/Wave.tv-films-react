@@ -15,7 +15,6 @@ function Header() {
           </span>
         </p>
       </a>
-
       <CgProfile className={styles.bar__profile} />
     </header>
   );

@@ -22,6 +22,7 @@ function Search({ searchHandle }) {
         />
         <button className={styles.form__button}>найти</button>
       </label>
+      <label></label>
     </form>
   );
 }

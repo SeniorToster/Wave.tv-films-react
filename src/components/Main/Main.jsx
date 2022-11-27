@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { LinearProgress } from '@mui/material';
 import Movies from './Movies/Movies';
 import Search from './Search/Search';
 import styles from './Main.module.scss';
@@ -11,6 +12,7 @@ const ArrMonth = stringMonth.toUpperCase().split(',');
 
 function Main() {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -24,11 +26,15 @@ function Main() {
       }
     )
       .then(res => res.json())
-      .then(json => setMovies(json.items))
+      .then(json => {
+        setMovies(json.items);
+        setLoading(false);
+      })
       .catch(err => console.log(err));
   }, []);
 
   const searchHandle = text => {
+    setLoading(true);
     fetch(
       `https://kinopoiskapiunofficial.tech/api/v2.2/films?keyword=${text}`,
       {
@@ -40,14 +46,17 @@ function Main() {
       }
     )
       .then(res => res.json())
-      .then(json => setMovies(json.items))
+      .then(json => {
+        setMovies(json.items);
+        setLoading(false);
+      })
       .catch(err => console.log(err));
   };
 
   return (
     <div className={styles.wrapper}>
       <Search searchHandle={searchHandle} />
-      <Movies movies={movies} />
+      {loading ? <LinearProgress /> : <Movies movies={movies} />}
     </div>
   );
 }

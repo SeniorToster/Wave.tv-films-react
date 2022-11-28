@@ -2,7 +2,6 @@ import Movie from '../Movie/Movie';
 import styles from './Movies.module.scss';
 
 function Movies({ movies }) {
-  console.log(movies);
   return (
     <div>
       {movies.length ? (

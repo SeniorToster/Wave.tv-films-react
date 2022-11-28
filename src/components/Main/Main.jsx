@@ -20,7 +20,7 @@ function Main() {
       {
         method: 'GET',
         headers: {
-          'X-API-KEY': '7dba1128-8e80-4faa-9e12-e23096e28987',
+          'X-API-KEY': 'fcd897c6-5cf1-4338-a96b-58135de60eff',
           'Content-Type': 'application/json',
         },
       }
@@ -33,18 +33,25 @@ function Main() {
       .catch(err => console.log(err));
   }, []);
 
-  const searchHandle = text => {
+  const searchHandle = (text, genre, country, age, rating) => {
+    const textNew = text.trim();
     setLoading(true);
-    fetch(
-      `https://kinopoiskapiunofficial.tech/api/v2.2/films?keyword=${text}`,
-      {
-        method: 'GET',
-        headers: {
-          'X-API-KEY': '7dba1128-8e80-4faa-9e12-e23096e28987',
-          'Content-Type': 'application/json',
-        },
-      }
-    )
+
+    const link = `https://kinopoiskapiunofficial.tech/api/v2.2/films?${
+      country ? `countries=${country}&` : ''
+    }${genre ? `genres=${genre}&` : ''}${
+      rating ? `ratingFrom=${rating[2]}&ratingTo=${rating[0]}&` : ''
+    }${age ? `yearFrom=${age}&yearTo=${age}&` : ''}${
+      text ? `keyword=${textNew}` : ''
+    }`;
+
+    fetch(link, {
+      method: 'GET',
+      headers: {
+        'X-API-KEY': 'fcd897c6-5cf1-4338-a96b-58135de60eff',
+        'Content-Type': 'application/json',
+      },
+    })
       .then(res => res.json())
       .then(json => {
         setMovies(json.items);

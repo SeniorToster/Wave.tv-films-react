@@ -1,11 +1,26 @@
 import { useState } from 'react';
+import React from 'react';
 import styles from './Search.module.scss';
+import AccordionFilter from './AccordionFilter';
 
-function Search({ searchHandle }) {
+export default React.memo(function Search({ searchHandle }) {
   const [text, setText] = useState('');
+  let filters = { genre: '', country: '', age: '', rating: '' };
+
   const submitHandle = e => {
     e.preventDefault();
-    searchHandle(text);
+    const { genre, country, age, rating } = filters;
+    searchHandle(text, genre, country, age, rating);
+    setText('');
+  };
+
+  const filtersHandle = (genreNew, countryNew, ageNew, ratingNew) => {
+    filters = {
+      genre: genreNew,
+      country: countryNew,
+      age: ageNew,
+      rating: ratingNew,
+    };
   };
 
   return (
@@ -22,9 +37,9 @@ function Search({ searchHandle }) {
         />
         <button className={styles.form__button}>найти</button>
       </label>
-      <label></label>
+      <label>
+        <AccordionFilter filtersHandle={filtersHandle} />
+      </label>
     </form>
   );
-}
-
-export default Search;
+});

@@ -1,25 +1,29 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import styles from './Filters.module.scss';
 
-function Filters({ filtersHandle }) {
+const ages = ['2022', '2021', '2020', '2019', '2018', '2017', '2015'];
+const rating = ['10-9', '9-8', '8-7', '7-6', '6-5', '5-4'];
+
+export default React.memo(function Filters({ filtersHandle }) {
   const [genres, setGenres] = useState([]);
   const [countries, setCountries] = useState([]);
+
   const [inputValueCountry, setInputValueCountry] = useState('');
   const [inputValueGenre, setInputValueGenre] = useState('');
   const [inputValueAge, setInputValueAge] = useState('');
   const [inputValueRating, setInputValueRating] = useState('');
-  const [idCountry, setIdCountry] = useState('');
-  const [idGenre, setIdGenre] = useState('');
-  const ages = ['2022', '2021', '2020', '2019', '2018', '2017', '2015'];
-  const rating = ['10-9', '9-8', '8-7', '7-6', '6-5', '5-4'];
+  const [filters, getFilters] = useState({});
+
+  console.log(filters);
 
   useEffect(() => {
     fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/filters`, {
       method: 'GET',
       headers: {
-        'X-API-KEY': 'fcd897c6-5cf1-4338-a96b-58135de60eff',
+        'X-API-KEY': '7dba1128-8e80-4faa-9e12-e23096e28987',
         'Content-Type': 'application/json',
       },
     })
@@ -40,12 +44,14 @@ function Filters({ filtersHandle }) {
 
   const handleSelectGenre = (e, newValueGenre) => {
     setInputValueGenre(newValueGenre);
+
     if (newValueGenre) {
       const newIdGenre = genres.filter(
         genre => genre.label === newValueGenre
       )[0].id;
-      setIdGenre(newIdGenre);
-      filtersHandle(newIdGenre, idCountry, inputValueAge, inputValueRating);
+
+      getFilters({ ...filters, genre: newIdGenre });
+      filtersHandle(filters);
     }
   };
 
@@ -56,19 +62,32 @@ function Filters({ filtersHandle }) {
       const newIdCountry = countries.filter(
         country => country.label === newValueCountry
       )[0].id;
-      setIdCountry(newIdCountry);
-      filtersHandle(idGenre, newIdCountry, inputValueAge, inputValueRating);
+
+      getFilters({ ...filters, country: newIdCountry });
+      filtersHandle(filters);
     }
   };
 
   const handleSelectAge = (e, newValueAge) => {
     setInputValueAge(newValueAge);
-    filtersHandle(idGenre, idCountry, newValueAge, inputValueRating);
+
+    getFilters({ ...filters, yearFrom: newValueAge, yearTo: newValueAge });
+    filtersHandle(filters);
   };
 
   const handleSelectRating = (e, newValueRating) => {
     setInputValueRating(newValueRating);
-    filtersHandle(idGenre, idCountry, inputValueAge, newValueRating);
+
+    if (newValueRating) {
+      const arrRating = newValueRating.split('-');
+
+      getFilters({
+        ...filters,
+        ratingTo: arrRating[0],
+        ratingFrom: arrRating[1],
+      });
+      filtersHandle(filters);
+    }
   };
 
   return (
@@ -103,6 +122,4 @@ function Filters({ filtersHandle }) {
       />
     </div>
   );
-}
-
-export default Filters;
+});

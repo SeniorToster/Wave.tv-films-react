@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import React from 'react';
 import { LinearProgress } from '@mui/material';
 import Movies from './Movies/Movies';
 import Search from './Search/Search';
@@ -10,7 +11,7 @@ const stringMonth =
   'January,February,March,April,May,June,July,August,September,October,November,December,';
 const ArrMonth = stringMonth.toUpperCase().split(',');
 
-function Main() {
+export default React.memo(function Main() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -20,7 +21,7 @@ function Main() {
       {
         method: 'GET',
         headers: {
-          'X-API-KEY': 'fcd897c6-5cf1-4338-a96b-58135de60eff',
+          'X-API-KEY': '7dba1128-8e80-4faa-9e12-e23096e28987',
           'Content-Type': 'application/json',
         },
       }
@@ -33,31 +34,34 @@ function Main() {
       .catch(err => console.log(err));
   }, []);
 
-  const searchHandle = (text, genre, country, age, rating) => {
+  const searchHandle = (text, filters) => {
     const textNew = text.trim();
     setLoading(true);
+    const params = { ...filters, keyword: textNew };
 
-    const link = `https://kinopoiskapiunofficial.tech/api/v2.2/films?${
-      country ? `countries=${country}&` : ''
-    }${genre ? `genres=${genre}&` : ''}${
-      rating ? `ratingFrom=${rating[2]}&ratingTo=${rating[0]}&` : ''
-    }${age ? `yearFrom=${age}&yearTo=${age}&` : ''}${
-      text ? `keyword=${textNew}` : ''
-    }`;
+    Object.keys(params).forEach(param => {
+      if (param === undefined) delete params[param];
+    });
 
-    fetch(link, {
-      method: 'GET',
-      headers: {
-        'X-API-KEY': 'fcd897c6-5cf1-4338-a96b-58135de60eff',
-        'Content-Type': 'application/json',
-      },
-    })
+    fetch(
+      `https://kinopoiskapiunofficial.tech/api/v2.2/films?${new URLSearchParams(
+        params
+      )}`,
+      {
+        method: 'GET',
+        headers: {
+          'X-API-KEY': '7dba1128-8e80-4faa-9e12-e23096e28987',
+          'Content-Type': 'application/json',
+        },
+      }
+    )
       .then(res => res.json())
       .then(json => {
         setMovies(json.items);
         setLoading(false);
       })
       .catch(err => console.log(err));
+    console.log(text);
   };
 
   return (
@@ -66,6 +70,4 @@ function Main() {
       {loading ? <LinearProgress /> : <Movies movies={movies} />}
     </div>
   );
-}
-
-export default Main;
+});

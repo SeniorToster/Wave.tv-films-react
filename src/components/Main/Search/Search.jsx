@@ -3,24 +3,18 @@ import React from 'react';
 import styles from './Search.module.scss';
 import AccordionFilter from './AccordionFilter';
 
-export default React.memo(function Search({ searchHandle }) {
+function Search({ searchHandle }) {
   const [text, setText] = useState('');
-  let filters = { genre: '', country: '', age: '', rating: '' };
+  const [filtersData, setFiltersData] = useState({});
 
   const submitHandle = e => {
     e.preventDefault();
-    const { genre, country, age, rating } = filters;
-    searchHandle(text, genre, country, age, rating);
+    searchHandle(text, filtersData);
     setText('');
   };
 
-  const filtersHandle = (genreNew, countryNew, ageNew, ratingNew) => {
-    filters = {
-      genre: genreNew,
-      country: countryNew,
-      age: ageNew,
-      rating: ratingNew,
-    };
+  const filtersHandle = filters => {
+    setFiltersData(filters);
   };
 
   return (
@@ -42,4 +36,6 @@ export default React.memo(function Search({ searchHandle }) {
       </label>
     </form>
   );
-});
+}
+
+export default Search;

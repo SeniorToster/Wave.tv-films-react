@@ -1,13 +1,12 @@
 import React from 'react';
-import { styled } from '@mui/material/styles';
 import { IoChevronDown } from 'react-icons/io5';
-import MuiAccordion from '@mui/material/Accordion';
+import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import MuiAccordionSummary from '@mui/material/AccordionSummary';
+import AccordionSummary from '@mui/material/AccordionSummary';
 import Filters from './Filters/Filters';
 
 export default React.memo(function AccordionFilter({ filtersHandle }) {
-  const Accordion = styled(MuiAccordion)(({ theme }) => ({
+  /*   const Accordion = styled(MuiAccordion)(({ theme }) => ({
     backgroundColor: '#1d3557',
     '&:last-of-type': {
       borderBottomLeftRadius: '20px',
@@ -44,8 +43,10 @@ export default React.memo(function AccordionFilter({ filtersHandle }) {
       fontWeight: '700',
       color: '#f1faee',
     },
-  }));
+  })); */
+
   console.log('render');
+
   return (
     <Accordion>
       <AccordionSummary aria-controls='panel1a-content' id='panel1a-header'>

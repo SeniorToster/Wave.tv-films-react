@@ -1,0 +1,42 @@
+.wrapperInput {
+  display: flex;
+  margin-bottom: 10px;
+  transition: color 0.2s ease-in-out;
+  position: relative;
+  & > svg {
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+}
+
+.input {
+  border: 1px #2e2e2e solid;
+  border-right: none;
+  border-radius: 16px 0 0 16px;
+  outline: none;
+  background-color: #121212;
+  font-size: 22px;
+  padding: 8px 20px;
+  width: 100%;
+  color: #f1faee;
+}
+
+.button {
+  border: 1px #2e2e2e solid;
+  border-radius: 0 16px 16px 0;
+  background-color: #1e1e1e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  & > svg {
+    color: #f1faee;
+    width: 30px;
+    height: 30px;
+  }
+}

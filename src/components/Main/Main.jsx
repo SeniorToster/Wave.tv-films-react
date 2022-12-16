@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import React from 'react';
 import { LinearProgress } from '@mui/material';
 import Movies from './Movies/Movies';
-import Search from './Search/Search';
+import SearchMain from './SearchMain/SearchMain';
 import styles from './Main.module.scss';
 
 const newYear = new Date().getFullYear();
@@ -11,7 +11,7 @@ const stringMonth =
   'January,February,March,April,May,June,July,August,September,October,November,December,';
 const ArrMonth = stringMonth.toUpperCase().split(',');
 
-export default React.memo(function Main() {
+function Main() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -34,11 +34,9 @@ export default React.memo(function Main() {
       .catch(err => console.log(err));
   }, []);
 
-  const searchHandle = (text, filters) => {
-    const textNew = text.trim();
+  const handleSearchData = params => {
     setLoading(true);
-    const params = { ...filters, keyword: textNew };
-
+    console.log(params);
     Object.keys(params).forEach(param => {
       if (param === undefined) delete params[param];
     });
@@ -61,13 +59,14 @@ export default React.memo(function Main() {
         setLoading(false);
       })
       .catch(err => console.log(err));
-    console.log(text);
   };
 
   return (
     <div className={styles.wrapper}>
-      <Search searchHandle={searchHandle} />
+      <SearchMain handleSearchData={handleSearchData} />
       {loading ? <LinearProgress /> : <Movies movies={movies} />}
     </div>
   );
-});
+}
+
+export default Main;

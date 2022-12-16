@@ -1,0 +1,20 @@
+.accordionText {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  & > p {
+    font-weight: 700;
+    font-size: 18px;
+    color: #f1faee;
+  }
+
+  & svg {
+    width: 28px;
+    height: 28px;
+    color: #f1faee;
+  }
+}
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}

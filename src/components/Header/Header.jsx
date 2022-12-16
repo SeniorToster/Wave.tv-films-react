@@ -11,7 +11,7 @@ function Header() {
           wave.
           <span>
             tv
-            <sup>beta 0.1</sup>
+            <sup>beta 0.2</sup>
           </span>
         </p>
       </a>

@@ -1,18 +1,21 @@
+import { useContext } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { CgClose } from 'react-icons/cg';
+import { MoviesContext } from '../../../../Context';
 import styles from './Search.module.scss';
 
-function Search({ setText, text }) {
+function Search() {
+  const { inputValueSearch, handleInputSearch } = useContext(MoviesContext);
   return (
     <label className={styles.wrapperInput}>
       <input
         placeholder='Введите запрос'
         type='search'
         className={styles.input}
-        value={text}
-        onChange={e => setText(e.target.value)}
+        value={inputValueSearch}
+        onChange={e => handleInputSearch(e.target.value)}
       />
-      {text && <CgClose onClick={() => setText('')} />}
+      {inputValueSearch && <CgClose onClick={() => handleInputSearch('')} />}
       <button className={styles.button}>
         <BsSearch />
       </button>

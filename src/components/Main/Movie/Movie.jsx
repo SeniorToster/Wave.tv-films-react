@@ -1,6 +1,16 @@
 import { BsBookmark } from 'react-icons/bs';
 import styles from './Movie.module.scss';
 
+let country = 'неизвестно';
+let genre = 'неизвестно';
+const types = [
+  { typeUS: 'FILM', typeRU: 'Фильм' },
+  { typeUS: 'TV_SERIES', typeRU: 'Сериал' },
+  { typeUS: 'TV_SHOW', typeRU: 'Ток-шоу' },
+  { typeUS: 'MINI_SERIES', typeRU: 'Мини-сериал' },
+  { typeUS: 'NONE', typeRU: '' },
+];
+
 function Movie({
   nameRu,
   nameOriginal,
@@ -13,16 +23,6 @@ function Movie({
   duration,
   premiereRu,
 }) {
-  let country = 'неизвестно';
-  let genre = 'неизвестно';
-  const types = [
-    { typeUS: 'FILM', typeRU: 'Фильм' },
-    { typeUS: 'TV_SERIES', typeRU: 'Сериал' },
-    { typeUS: 'TV_SHOW', typeRU: 'Ток-шоу' },
-    { typeUS: 'MINI_SERIES', typeRU: 'Мини-сериал' },
-    { typeUS: 'NONE', typeRU: '' },
-  ];
-
   const typeArrRU = types.filter(typeFilm => typeFilm.typeUS === type);
   const { typeRU } = typeArrRU[0];
 

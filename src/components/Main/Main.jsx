@@ -1,70 +1,51 @@
-import { useEffect, useState } from 'react';
-import React from 'react';
+import { useEffect, useContext } from 'react';
 import { LinearProgress } from '@mui/material';
+import { getPremieres, getResultsSearch } from '../../api';
+import { MoviesContext } from '../../Context';
 import Movies from './Movies/Movies';
 import SearchMain from './SearchMain/SearchMain';
 import styles from './Main.module.scss';
 
-const newYear = new Date().getFullYear();
-const newMonth = new Date().getMonth();
-const stringMonth =
-  'January,February,March,April,May,June,July,August,September,October,November,December,';
-const ArrMonth = stringMonth.toUpperCase().split(',');
-
 function Main() {
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { searchQuery, moviesList, loading, changeLoading, updateMoviesList } =
+    useContext(MoviesContext);
 
   useEffect(() => {
-    fetch(
-      `https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${newYear}&month=${ArrMonth[newMonth]}`,
-      {
-        method: 'GET',
-        headers: {
-          'X-API-KEY': '7dba1128-8e80-4faa-9e12-e23096e28987',
-          'Content-Type': 'application/json',
-        },
-      }
-    )
-      .then(res => res.json())
+    getPremieres()
       .then(json => {
-        setMovies(json.items);
-        setLoading(false);
+        updateMoviesList(json.items);
+        changeLoading(false);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        changeLoading(false);
+      });
+    // eslint-disable-next-line
   }, []);
 
-  const handleSearchData = params => {
-    setLoading(true);
-    console.log(params);
-    Object.keys(params).forEach(param => {
-      if (param === undefined) delete params[param];
+  const handleSearch = e => {
+    e.preventDefault();
+
+    const parens = { ...searchQuery };
+
+    Object.keys(parens).forEach(key => {
+      if (!parens[key]) delete parens[key];
     });
 
-    fetch(
-      `https://kinopoiskapiunofficial.tech/api/v2.2/films?${new URLSearchParams(
-        params
-      )}`,
-      {
-        method: 'GET',
-        headers: {
-          'X-API-KEY': '7dba1128-8e80-4faa-9e12-e23096e28987',
-          'Content-Type': 'application/json',
-        },
-      }
-    )
-      .then(res => res.json())
+    changeLoading(true);
+
+    getResultsSearch(searchQuery)
       .then(json => {
-        setMovies(json.items);
-        setLoading(false);
+        updateMoviesList(json.items);
+        changeLoading(false);
       })
       .catch(err => console.log(err));
   };
 
   return (
     <div className={styles.wrapper}>
-      <SearchMain handleSearchData={handleSearchData} />
-      {loading ? <LinearProgress /> : <Movies movies={movies} />}
+      <SearchMain handleSearch={handleSearch} />
+      {loading ? <LinearProgress /> : <Movies movies={moviesList} />}
     </div>
   );
 }

@@ -8,6 +8,10 @@ function Movie() {
 
   useEffect(() => {
     getMovie(params.idMovie).then(json => setMovie(json));
+
+    const script = document.createElement('script');
+    script.src = '/player_.js';
+    document.body.appendChild(script);
   }, [params]);
 
   console.log(movie);
@@ -15,7 +19,7 @@ function Movie() {
     <>
       <img src={movie.posterUrlPreview} alt='' />
       <div>{movie.nameRu}</div>
-      <div data-kinopoisk={movie.kinopoiskId} id='kinobd'></div>
+      <div data-kinopoisk={params.idMovie} id='kinobd'></div>
     </>
   );
 }

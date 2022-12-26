@@ -1,12 +1,11 @@
 import { useEffect, useContext } from 'react';
 import { LinearProgress } from '@mui/material';
-import { getPremieres, getResultsSearch } from '../../api';
-import { MoviesContext } from '../../Context';
-import Movies from './Movies/Movies';
-import SearchMain from './SearchMain/SearchMain';
-import styles from './Main.module.scss';
+import { getPremieres, getResultsSearch } from '../api';
+import { MoviesContext } from '../Context';
+import Movies from '../components/MoviesList/MoviesList';
+import SearchMain from '../components/SearchMain/SearchMain';
 
-function Main() {
+function Search() {
   const { searchQuery, moviesList, loading, changeLoading, updateMoviesList } =
     useContext(MoviesContext);
 
@@ -24,6 +23,7 @@ function Main() {
   }, []);
 
   const handleSearch = e => {
+    console.log(e);
     e.preventDefault();
 
     const parens = { ...searchQuery };
@@ -31,10 +31,9 @@ function Main() {
     Object.keys(parens).forEach(key => {
       if (!parens[key]) delete parens[key];
     });
-
     changeLoading(true);
 
-    getResultsSearch(searchQuery)
+    getResultsSearch(parens)
       .then(json => {
         updateMoviesList(json.items);
         changeLoading(false);
@@ -43,11 +42,15 @@ function Main() {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <>
       <SearchMain handleSearch={handleSearch} />
-      {loading ? <LinearProgress /> : <Movies movies={moviesList} />}
-    </div>
+      {loading ? (
+        <LinearProgress />
+      ) : (
+        <Movies title={'Результат'} movies={moviesList} />
+      )}
+    </>
   );
 }
 
-export default Main;
+export default Search;

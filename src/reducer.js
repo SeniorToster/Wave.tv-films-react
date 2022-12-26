@@ -17,7 +17,7 @@ export function reducer(state, { type, payload }) {
       if (payload) {
         const newIdGenre = state.genres.filter(
           genre => genre.label === payload
-        )[0].id;
+        )[0]?.id;
 
         return {
           ...state,
@@ -41,8 +41,7 @@ export function reducer(state, { type, payload }) {
       if (payload) {
         const newIdCountry = state.countries.filter(
           country => country.label === payload
-        )[0].id;
-
+        )[0]?.id;
         return {
           ...state,
           inputValueCountry: payload,
@@ -112,6 +111,26 @@ export function reducer(state, { type, payload }) {
         loading: payload,
       };
 
+    case 'ADD_FAVORITES_LIST': {
+      const newFavoriteList = [...state.favoritesList, payload];
+
+      localStorage.favorites = JSON.stringify(newFavoriteList);
+      return {
+        ...state,
+        favoritesList: newFavoriteList,
+      };
+    }
+    case 'DELETE_FAVORITES_LIST': {
+      const newFavoriteList = state.favoritesList.filter(
+        movie => movie.kinopoiskId !== payload
+      );
+
+      localStorage.favorites = JSON.stringify(newFavoriteList);
+      return {
+        ...state,
+        favoritesList: newFavoriteList,
+      };
+    }
     default:
       return state;
   }

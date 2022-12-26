@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { CgClose } from 'react-icons/cg';
-import { MoviesContext } from '../../../../Context';
+import { MoviesContext } from '../../../Context';
 import styles from './Search.module.scss';
 
 function Search() {

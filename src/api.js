@@ -29,6 +29,15 @@ const getResultsSearch = async params => {
   return await response.json();
 };
 
+const getMovie = async idMovie => {
+  console.log(idMovie);
+  const response = await fetch(
+    `https://kinopoiskapiunofficial.tech/api/v2.2/films/${idMovie}`,
+    fetchParameters
+  );
+  return await response.json();
+};
+
 const getListCountriesGenders = async params => {
   const response = await fetch(
     `https://kinopoiskapiunofficial.tech/api/v2.2/films/filters`,
@@ -37,4 +46,4 @@ const getListCountriesGenders = async params => {
   return await response.json();
 };
 
-export { getPremieres, getResultsSearch, getListCountriesGenders };
+export { getPremieres, getResultsSearch, getListCountriesGenders, getMovie };

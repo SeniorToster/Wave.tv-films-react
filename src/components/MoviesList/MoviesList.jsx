@@ -1,12 +1,12 @@
-import Movie from '../Movie/Movie';
-import styles from './Movies.module.scss';
+import Movie from '../MovieCard/MovieCard';
+import styles from './MoviesList.module.scss';
 
-function Movies({ movies }) {
+function MoviesList({ movies = {}, title }) {
   return (
     <div>
       {movies.length ? (
         <>
-          <h2 className={styles.title}>Фильмы</h2>
+          <h2 className={styles.title}>{title}</h2>
           <div className={styles.wrapper}>
             {movies.map(movie => (
               <Movie key={movie.kinopoiskId} {...movie} />
@@ -20,4 +20,4 @@ function Movies({ movies }) {
   );
 }
 
-export default Movies;
+export default MoviesList;

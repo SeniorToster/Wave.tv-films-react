@@ -1,11 +1,12 @@
-import { BsFilm } from 'react-icons/bs';
+import { BsFilm, BsBookmark, BsSearch } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
+import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 
 function Header() {
   return (
     <header className={styles.bar}>
-      <a className={styles.bar__logo} href='./'>
+      <Link className={styles.bar__logo} to='/'>
         <BsFilm />
         <p>
           wave.
@@ -14,8 +15,18 @@ function Header() {
             <sup>beta 0.2</sup>
           </span>
         </p>
-      </a>
-      <CgProfile className={styles.bar__profile} />
+      </Link>
+      <div className={styles.bar__wrapperIcons}>
+        <Link to='/search'>
+          <BsSearch />
+        </Link>
+        <Link to='/favorites'>
+          <BsBookmark />
+        </Link>
+        <Link className={styles.bar__profile} to='/'>
+          <CgProfile />
+        </Link>
+      </div>
     </header>
   );
 }

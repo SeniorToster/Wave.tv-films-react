@@ -3,6 +3,11 @@ import { reducer } from './reducer';
 
 export const MoviesContext = createContext();
 
+let favoriteLocal = [];
+if (localStorage.favorites) {
+  favoriteLocal = JSON.parse(localStorage.favorites);
+}
+
 const initialState = {
   moviesList: [],
   inputValueSearch: '',
@@ -14,6 +19,8 @@ const initialState = {
   countries: [],
   searchQuery: {},
   loading: true,
+  favoritesList: favoriteLocal,
+  isFirstInstallation: true,
 };
 
 export const ContextProvider = ({ children }) => {
@@ -49,6 +56,14 @@ export const ContextProvider = ({ children }) => {
 
   value.updateMoviesList = newMovies => {
     dispatch({ type: 'SET_MOVIES', payload: newMovies });
+  };
+
+  value.addFavoritesList = (movieItem) => {
+    dispatch({ type: 'ADD_FAVORITES_LIST', payload: movieItem});
+  };
+
+  value.delFavoritesList = (idMovie) => {
+    dispatch({ type: 'DELETE_FAVORITES_LIST', payload: idMovie});
   };
 
   return (

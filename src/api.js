@@ -6,7 +6,7 @@ const ArrMonth = stringMonth.toUpperCase().split(',');
 const fetchParameters = {
   method: 'GET',
   headers: {
-    'X-API-KEY': 'fcd897c6-5cf1-4338-a96b-58135de60eff',
+    'X-API-KEY': '7dba1128-8e80-4faa-9e12-e23096e28987',
     'Content-Type': 'application/json',
   },
 };
@@ -30,9 +30,16 @@ const getResultsSearch = async params => {
 };
 
 const getMovie = async idMovie => {
-  console.log(idMovie);
   const response = await fetch(
     `https://kinopoiskapiunofficial.tech/api/v2.2/films/${idMovie}`,
+    fetchParameters
+  );
+  return await response.json();
+};
+
+const getMovieBoxOffice = async idMovie => {
+  const response = await fetch(
+    `https://kinopoiskapiunofficial.tech/api/v2.2/films/${idMovie}/box_office`,
     fetchParameters
   );
   return await response.json();
@@ -46,4 +53,10 @@ const getListCountriesGenders = async params => {
   return await response.json();
 };
 
-export { getPremieres, getResultsSearch, getListCountriesGenders, getMovie };
+export {
+  getPremieres,
+  getResultsSearch,
+  getListCountriesGenders,
+  getMovie,
+  getMovieBoxOffice,
+};

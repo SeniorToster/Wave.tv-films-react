@@ -58,12 +58,12 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: 'SET_MOVIES', payload: newMovies });
   };
 
-  value.addFavoritesList = (movieItem) => {
-    dispatch({ type: 'ADD_FAVORITES_LIST', payload: movieItem});
+  value.addFavoritesList = movieItem => {
+    dispatch({ type: 'ADD_FAVORITES_LIST', payload: movieItem });
   };
 
-  value.delFavoritesList = (idMovie) => {
-    dispatch({ type: 'DELETE_FAVORITES_LIST', payload: idMovie});
+  value.delFavoritesList = idMovie => {
+    dispatch({ type: 'DELETE_FAVORITES_LIST', payload: idMovie });
   };
 
   return (

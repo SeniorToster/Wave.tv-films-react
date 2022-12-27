@@ -29,7 +29,7 @@ function App() {
                 <Route path='/' element={<Home />} />
                 <Route path='/search' element={<Search />} />
                 <Route path='/favorites' element={<Favorites />} />
-                <Route path='/movie/:idMovie' element={<Movie />} />
+                <Route path='/movie/:idMovieParams' element={<Movie />} />
               </Routes>
             </div>
             <Footer />

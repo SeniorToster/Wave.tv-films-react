@@ -1,6 +1,5 @@
 import { BsGithub } from 'react-icons/bs';
 import { TbNoCopyright } from 'react-icons/tb';
-
 import styles from './Footer.module.scss';
 
 function Footer() {

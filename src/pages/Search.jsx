@@ -23,7 +23,6 @@ function Search() {
   }, []);
 
   const handleSearch = e => {
-    console.log(e);
     e.preventDefault();
 
     const parens = { ...searchQuery };

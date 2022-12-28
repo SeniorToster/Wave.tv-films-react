@@ -26,9 +26,14 @@ function Movie() {
 
   useEffect(() => {
     async function name() {
-      await getMovie(idMovieParams).then(json => {
-        setMovie(json);
-      });
+      await getMovie(idMovieParams)
+        .then(json => {
+          if (json.kinopoiskId) setMovie(json);
+        })
+        .catch(error => {
+          console.log(error);
+          setLoading(false);
+        });
       await getMovieBoxOffice(idMovieParams).then(json => {
         if (json.items) {
           let office = {};
@@ -38,8 +43,8 @@ function Movie() {
 
           setOffice({ ...office });
         }
+        setLoading(false);
       });
-      setLoading(false);
 
       const script = document.createElement('script');
       script.src = '/player_.js';
@@ -52,11 +57,12 @@ function Movie() {
     name();
   }, [idMovieParams]);
   console.log(movie);
+
   return (
     <>
       {loading ? (
         <LinearProgress />
-      ) : (
+      ) : movie.kinopoiskId ? (
         <>
           <div onClick={() => navigate(-1)} className={styles.return}>
             <FaChevronLeft />
@@ -79,28 +85,36 @@ function Movie() {
                 <h3 className={styles.aboutMovie__title}>
                   О {type === 'FILM' ? 'фильме' : 'сериале'}
                 </h3>
-                <ul className={styles.aboutMovie__list}>
+                <ul className={styles.aboutMovie__listWrapper}>
                   <li className={styles.aboutMovie__list}>
                     <span className={styles.aboutMovie__key}>
                       Год производства
                     </span>
-                    <span className={styles.aboutMovie__value}>{year}</span>
+                    <span className={styles.aboutMovie__value}>
+                      {year ? year : '-'}
+                    </span>
                   </li>
                   <li className={styles.aboutMovie__list}>
                     <span className={styles.aboutMovie__key}>Страна</span>
                     <span className={styles.aboutMovie__value}>
-                      {countries.map(country => country.country).join(', ')}
+                      {countries.length
+                        ? countries.map(country => country.country).join(', ')
+                        : '-'}
                     </span>
                   </li>
                   <li className={styles.aboutMovie__list}>
                     <span className={styles.aboutMovie__key}>Жанр</span>
                     <span className={styles.aboutMovie__value}>
-                      {genres.map(genre => genre.genre).join(', ')}
+                      {genres.length
+                        ? genres.map(genre => genre.genre).join(', ')
+                        : '-'}
                     </span>
                   </li>
                   <li className={styles.aboutMovie__list}>
                     <span className={styles.aboutMovie__key}>Слоган</span>
-                    <span className={styles.aboutMovie__value}>{slogan}</span>
+                    <span className={styles.aboutMovie__value}>
+                      {slogan ? `« ${slogan} »` : '-'}
+                    </span>
                   </li>
                   <li className={styles.aboutMovie__list}>
                     <span className={styles.aboutMovie__key}>Бюджет</span>
@@ -120,20 +134,23 @@ function Movie() {
                   </li>
                   <li className={styles.aboutMovie__list}>
                     <span className={styles.aboutMovie__key}>Возраст</span>
-                    <span
-                      className={
-                        (styles.aboutMovie__value, styles.aboutMovie__value_age)
-                      }
-                    >
-                      {ratingAgeLimits
-                        ? `${ratingAgeLimits.replace('age', '')}+`
-                        : '-'}
-                    </span>
+                    {ratingAgeLimits ? (
+                      <span
+                        className={
+                          (styles.aboutMovie__value,
+                          styles.aboutMovie__value_age)
+                        }
+                      >
+                        {ratingAgeLimits.replace('age', '')}+
+                      </span>
+                    ) : (
+                      '-'
+                    )}
                   </li>
                   <li className={styles.aboutMovie__list}>
                     <span className={styles.aboutMovie__key}>Время</span>
                     <span className={styles.aboutMovie__value}>
-                      {filmLength} мин
+                      {filmLength ? `${filmLength} мин` : '-'}
                     </span>
                   </li>
                 </ul>
@@ -142,6 +159,8 @@ function Movie() {
           </div>
           <div data-kinopoisk={idMovieParams} id='kinobd'></div>
         </>
+      ) : (
+        <h1 className={styles.notMovie}>Такого фильма не существует</h1>
       )}
     </>
   );

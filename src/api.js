@@ -6,7 +6,7 @@ const ArrMonth = stringMonth.toUpperCase().split(',');
 const fetchParameters = {
   method: 'GET',
   headers: {
-    'X-API-KEY': '7dba1128-8e80-4faa-9e12-e23096e28987',
+    'X-API-KEY': 'fcd897c6-5cf1-4338-a96b-58135de60eff',
     'Content-Type': 'application/json',
   },
 };

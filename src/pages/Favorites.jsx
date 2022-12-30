@@ -1,11 +1,17 @@
 import { useContext } from 'react';
+import Back from '../components/Back/Back';
 import Movies from '../components/MoviesList/MoviesList';
 import { MoviesContext } from '../Context';
 
 function Favorites() {
   const { favoritesList } = useContext(MoviesContext);
 
-  return <Movies movies={favoritesList} title={'Избранное'} />;
+  return (
+    <>
+      <Back />
+      <Movies movies={favoritesList} title={'Избранное'} />
+    </>
+  );
 }
 
 export default Favorites;

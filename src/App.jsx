@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home';
 import Search from './pages/Search';
+import Watch from './pages/Watch';
 import Favorites from './pages/Favorites';
 import './App.scss';
 import Movie from './pages/Movie';
@@ -30,6 +31,7 @@ function App() {
                 <Route path='/search' element={<Search />} />
                 <Route path='/favorites' element={<Favorites />} />
                 <Route path='/movie/:idMovieParams' element={<Movie />} />
+                <Route path='/watch/:idMovieParams' element={<Watch />} />
               </Routes>
             </div>
             <Footer />

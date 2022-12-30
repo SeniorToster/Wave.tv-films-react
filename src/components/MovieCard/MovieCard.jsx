@@ -1,7 +1,5 @@
-import { useContext } from 'react';
-import { BsBookmark, BsBookmarkX } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import { MoviesContext } from '../../Context';
+import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
 import styles from './MovieCard.module.scss';
 
 let country = 'неизвестно';
@@ -28,13 +26,8 @@ function MovieCard(props) {
     premiereRu,
     kinopoiskId,
   } = props;
-  const { favoritesList, addFavoritesList, delFavoritesList } =
-    useContext(MoviesContext);
   const typeArrRU = types.filter(typeFilm => typeFilm.typeUS === type);
   const { typeRU } = typeArrRU[0];
-  const isFavorite = favoritesList.filter(
-    movie => movie.kinopoiskId === kinopoiskId
-  );
 
   if (countries.length) ({ country } = countries[0]);
 
@@ -46,21 +39,7 @@ function MovieCard(props) {
         <div className={styles.wrapper__poster}>
           <img src={posterUrlPreview} alt='' />
           <div className={styles.wrapper__icons}>
-            {isFavorite.length ? (
-              <BsBookmarkX
-                onClick={e => {
-                  e.preventDefault();
-                  delFavoritesList(kinopoiskId);
-                }}
-              />
-            ) : (
-              <BsBookmark
-                onClick={e => {
-                  e.preventDefault();
-                  addFavoritesList(props);
-                }}
-              />
-            )}
+            <FavoriteIcon movie={props} />
           </div>
           <div className={styles.wrapper__hoverInfo}>
             {!!premiereRu ? (

@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { LinearProgress } from '@mui/material';
 import { getMovie, getMovieBoxOffice } from '../api';
-import { FaChevronLeft } from 'react-icons/fa';
+import { BsFillCaretRightFill } from 'react-icons/bs';
 import styles from './Movie.module.scss';
+import FavoriteIcon from '../components/FavoriteIcon/FavoriteIcon';
+import Back from '../components/Back/Back';
+import TabsContent from '../components/TabsContent/TabsContent';
 
 function Movie() {
   const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState({});
   const [{ budget, world }, setOffice] = useState({});
-  const navigate = useNavigate();
   const { idMovieParams } = useParams();
   const {
     posterUrlPreview,
@@ -22,6 +24,8 @@ function Movie() {
     slogan,
     filmLength,
     ratingAgeLimits,
+    kinopoiskId,
+    description,
   } = movie;
 
   useEffect(() => {
@@ -45,29 +49,19 @@ function Movie() {
         }
         setLoading(false);
       });
-
-      const script = document.createElement('script');
-      script.src = '/player_.js';
-      document.body.appendChild(script);
-
-      return () => {
-        script.remove();
-      };
     }
     name();
   }, [idMovieParams]);
+
   console.log(movie);
 
   return (
     <>
       {loading ? (
         <LinearProgress />
-      ) : movie.kinopoiskId ? (
+      ) : kinopoiskId ? (
         <>
-          <div onClick={() => navigate(-1)} className={styles.return}>
-            <FaChevronLeft />
-            <p>Назад</p>
-          </div>
+          <Back />
           <div className={styles.wrapperInfo}>
             <img
               src={posterUrlPreview}
@@ -76,11 +70,25 @@ function Movie() {
             />
             <div className={styles.wrapperInfo__textInfo}>
               <h1 className={styles.wrapperInfo__nameMovie}>
-                {nameRu ? nameRu : nameOriginal} ({year ? year : '-'})
+                {nameRu ? nameRu : nameOriginal} {year && `(${year})`}
               </h1>
-              <h2 className={styles.wrapperInfo__nameMovieOriginal}>
-                {nameRu && nameOriginal}
-              </h2>
+              {nameOriginal && (
+                <h2 className={styles.wrapperInfo__nameMovieOriginal}>
+                  {nameOriginal}
+                </h2>
+              )}
+              <div className={styles.wrapperInfo__buttons}>
+                <Link
+                  className={styles.wrapperInfo__watchButton}
+                  to={`/watch/${idMovieParams}`}
+                >
+                  <BsFillCaretRightFill />
+                  Смотреть
+                </Link>
+                <div title='Буду смотреть' className={styles.wrapperInfo__icon}>
+                  <FavoriteIcon movie={movie} />
+                </div>
+              </div>
               <div className={styles.aboutMovie}>
                 <h3 className={styles.aboutMovie__title}>
                   О {type === 'FILM' ? 'фильме' : 'сериале'}
@@ -157,7 +165,9 @@ function Movie() {
               </div>
             </div>
           </div>
-          <div data-kinopoisk={idMovieParams} id='kinobd'></div>
+          <div className={styles.wrapper__describedMovie}>
+            <TabsContent description={description} />
+          </div>
         </>
       ) : (
         <h1 className={styles.notMovie}>Такого фильма не существует</h1>

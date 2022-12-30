@@ -4,6 +4,7 @@ import { getPremieres, getResultsSearch } from '../api';
 import { MoviesContext } from '../Context';
 import Movies from '../components/MoviesList/MoviesList';
 import SearchMain from '../components/SearchMain/SearchMain';
+import Back from '../components/Back/Back';
 
 function Search() {
   const { searchQuery, moviesList, loading, changeLoading, updateMoviesList } =
@@ -42,6 +43,7 @@ function Search() {
 
   return (
     <>
+      <Back />
       <SearchMain handleSearch={handleSearch} />
       {loading ? (
         <LinearProgress />

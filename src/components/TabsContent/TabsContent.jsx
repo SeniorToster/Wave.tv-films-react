@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import Actors from '../Actors/Actors';
 import styles from './TabsContent.module.scss';
 
-function TabsContent(props) {
+function TabsContent({ description, kinopoiskId }) {
   const [tabIndex, setTabIndex] = useState(0);
-  const { description } = props;
-
+  console.log(kinopoiskId);
   return (
     <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
       <TabList className={styles.header}>
@@ -35,7 +35,7 @@ function TabsContent(props) {
         <h2 className={styles.description}>{description}</h2>
       </TabPanel>
       <TabPanel className={styles.tapPanel}>
-        <h2>Актёры</h2>
+        <Actors kinopoiskId={kinopoiskId} />
       </TabPanel>
       <TabPanel className={styles.tapPanel}>
         <h2>Факты</h2>

@@ -166,7 +166,7 @@ function Movie() {
             </div>
           </div>
           <div className={styles.wrapper__describedMovie}>
-            <TabsContent description={description} />
+            <TabsContent description={description} kinopoiskId={kinopoiskId} />
           </div>
         </>
       ) : (

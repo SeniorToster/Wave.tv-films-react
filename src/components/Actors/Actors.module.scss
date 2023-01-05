@@ -1,0 +1,17 @@
+.wrapperTitle {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin-bottom: 14px;
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  &__numActors {
+    color: #ffffffaf;
+    font-size: 20px;
+  }
+}
+.list {
+  margin-bottom: 30px;
+}

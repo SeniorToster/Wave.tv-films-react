@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Actors from '../Actors/Actors';
+import Description from '../Description/Description';
+import Facts from '../Facts/Facts';
 import styles from './TabsContent.module.scss';
 
 function TabsContent({ description, kinopoiskId }) {
@@ -28,17 +30,17 @@ function TabsContent({ description, kinopoiskId }) {
             2 === tabIndex ? styles.header__title_active : ''
           }`}
         >
-          Изображения
+          Факты
         </Tab>
       </TabList>
       <TabPanel>
-        <h2 className={styles.description}>{description}</h2>
+        <Description text={description} />
       </TabPanel>
       <TabPanel className={styles.tapPanel}>
         <Actors kinopoiskId={kinopoiskId} />
       </TabPanel>
       <TabPanel className={styles.tapPanel}>
-        <h2>Факты</h2>
+        <Facts kinopoiskId={kinopoiskId} />
       </TabPanel>
     </Tabs>
   );

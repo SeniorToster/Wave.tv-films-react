@@ -10,6 +10,7 @@ if (localStorage.favorites) {
 
 const initialState = {
   moviesList: [],
+  seriesList: [],
   inputValueSearch: '',
   inputValueCountry: '',
   inputValueGenre: '',
@@ -56,6 +57,10 @@ export const ContextProvider = ({ children }) => {
 
   value.updateMoviesList = newMovies => {
     dispatch({ type: 'SET_MOVIES', payload: newMovies });
+  };
+
+  value.updateSeriesList = newSeries => {
+    dispatch({ type: 'SET_SERIES', payload: newSeries });
   };
 
   value.addFavoritesList = movieItem => {

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
+import FavoriteIcon from '../../FavoriteIcon/FavoriteIcon';
 import styles from './MovieCard.module.scss';
 
 let country = 'неизвестно';
@@ -35,7 +35,7 @@ function MovieCard(props) {
 
   return (
     <div className={styles.wrapper}>
-      <Link to={`/movie/${kinopoiskId}`}>
+      <Link to={`/film/${kinopoiskId}`}>
         <div className={styles.wrapper__poster}>
           <img src={posterUrlPreview} alt='' />
           <div className={styles.wrapper__icons}>

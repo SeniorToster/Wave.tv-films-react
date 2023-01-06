@@ -105,6 +105,11 @@ export function reducer(state, { type, payload }) {
         ...state,
         moviesList: payload,
       };
+    case 'SET_SERIES':
+      return {
+        ...state,
+        seriesList: payload,
+      };
     case 'CHANGE_LOADING':
       return {
         ...state,

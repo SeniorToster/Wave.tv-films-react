@@ -6,7 +6,7 @@ import Movies from '../components/MoviesList/MoviesList';
 import SearchMain from '../components/SearchMain/SearchMain';
 import Back from '../components/Back/Back';
 
-function Search() {
+function SearchPage() {
   const { searchQuery, moviesList, loading, changeLoading, updateMoviesList } =
     useContext(MoviesContext);
 
@@ -54,4 +54,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default SearchPage;

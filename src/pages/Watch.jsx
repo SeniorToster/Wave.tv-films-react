@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Back from '../components/Back/Back';
 
-function Watch() {
+function WatchPage() {
   const { idMovieParams } = useParams();
 
   useEffect(() => {
@@ -23,4 +23,4 @@ function Watch() {
   );
 }
 
-export default Watch;
+export default WatchPage;

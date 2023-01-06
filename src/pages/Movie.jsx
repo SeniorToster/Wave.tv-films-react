@@ -8,7 +8,7 @@ import FavoriteIcon from '../components/FavoriteIcon/FavoriteIcon';
 import Back from '../components/Back/Back';
 import TabsContent from '../components/TabsContent/TabsContent';
 
-function Movie() {
+function MoviePage() {
   const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState({});
   const [{ budget, world }, setOffice] = useState({});
@@ -26,6 +26,7 @@ function Movie() {
     ratingAgeLimits,
     kinopoiskId,
     description,
+    ratingKinopoisk,
   } = movie;
 
   useEffect(() => {
@@ -63,11 +64,10 @@ function Movie() {
         <>
           <Back />
           <div className={styles.wrapperInfo}>
-            <img
-              src={posterUrlPreview}
-              className={styles.wrapperInfo__poster}
-              alt=''
-            />
+            <div className={styles.wrapperInfo__poster}>
+              {ratingKinopoisk && <div>{ratingKinopoisk.toFixed(1)}</div>}
+              <img src={posterUrlPreview} alt='' />
+            </div>
             <div className={styles.wrapperInfo__textInfo}>
               <h1 className={styles.wrapperInfo__nameMovie}>
                 {nameRu ? nameRu : nameOriginal} {year && `(${year})`}
@@ -176,4 +176,4 @@ function Movie() {
   );
 }
 
-export default Movie;
+export default MoviePage;

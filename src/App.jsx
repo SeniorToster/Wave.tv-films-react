@@ -4,12 +4,12 @@ import { ContextProvider } from './Context';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import Home from './pages/Home';
-import Search from './pages/Search';
-import Watch from './pages/Watch';
-import Favorites from './pages/Favorites';
+import HomePage from './pages/Home';
+import SearchPage from './pages/Search';
+import WatchPage from './pages/Watch';
+import FavoritesPage from './pages/Favorites';
+import MoviePage from './pages/Movie';
 import './App.scss';
-import Movie from './pages/Movie';
 
 function App() {
   const darkTheme = createTheme({
@@ -27,11 +27,11 @@ function App() {
             <Header />
             <div className='select-wrapper'>
               <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/search' element={<Search />} />
-                <Route path='/favorites' element={<Favorites />} />
-                <Route path='/movie/:idMovieParams' element={<Movie />} />
-                <Route path='/watch/:idMovieParams' element={<Watch />} />
+                <Route path='/' element={<HomePage />} />
+                <Route path='/search' element={<SearchPage />} />
+                <Route path='/favorites' element={<FavoritesPage />} />
+                <Route path='/film/:idMovieParams' element={<MoviePage />} />
+                <Route path='/watch/:idMovieParams' element={<WatchPage />} />
               </Routes>
             </div>
             <Footer />

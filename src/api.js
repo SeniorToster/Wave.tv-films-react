@@ -1,3 +1,4 @@
+const url = 'https://kinopoiskapiunofficial.tech';
 const newYear = new Date().getFullYear();
 const newMonth = new Date().getMonth();
 const stringMonth =
@@ -13,7 +14,7 @@ const fetchParameters = {
 
 const getPremieres = async () => {
   const response = await fetch(
-    `https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${newYear}&month=${ArrMonth[newMonth]}`,
+    `${url}/api/v2.2/films/premieres?year=${newYear}&month=${ArrMonth[newMonth]}`,
     fetchParameters
   );
   return await response.json();
@@ -21,9 +22,7 @@ const getPremieres = async () => {
 
 const getResultsSearch = async params => {
   const response = await fetch(
-    `https://kinopoiskapiunofficial.tech/api/v2.2/films?${new URLSearchParams(
-      params
-    )}`,
+    `${url}/api/v2.2/films?${new URLSearchParams(params)}`,
     fetchParameters
   );
   return await response.json();
@@ -31,7 +30,7 @@ const getResultsSearch = async params => {
 
 const getMovie = async idMovie => {
   const response = await fetch(
-    `https://kinopoiskapiunofficial.tech/api/v2.2/films/${idMovie}`,
+    `${url}/api/v2.2/films/${idMovie}`,
     fetchParameters
   );
   return await response.json();
@@ -39,7 +38,7 @@ const getMovie = async idMovie => {
 
 const getMovieBoxOffice = async idMovie => {
   const response = await fetch(
-    `https://kinopoiskapiunofficial.tech/api/v2.2/films/${idMovie}/box_office`,
+    `${url}/api/v2.2/films/${idMovie}/box_office`,
     fetchParameters
   );
   return await response.json();
@@ -47,7 +46,7 @@ const getMovieBoxOffice = async idMovie => {
 
 const getListCountriesGenders = async params => {
   const response = await fetch(
-    `https://kinopoiskapiunofficial.tech/api/v2.2/films/filters`,
+    `${url}/api/v2.2/films/filters`,
     fetchParameters
   );
   return await response.json();
@@ -55,7 +54,15 @@ const getListCountriesGenders = async params => {
 
 const getMovieActors = async idMovie => {
   const response = await fetch(
-    `https://kinopoiskapiunofficial.tech/api/v1/staff?filmId=${idMovie}`,
+    `${url}/api/v1/staff?filmId=${idMovie}`,
+    fetchParameters
+  );
+  return await response.json();
+};
+
+const getMovieFacts = async idMovie => {
+  const response = await fetch(
+    `${url}/api/v2.2/films/${idMovie}/facts`,
     fetchParameters
   );
   return await response.json();
@@ -68,4 +75,5 @@ export {
   getMovie,
   getMovieBoxOffice,
   getMovieActors,
+  getMovieFacts,
 };

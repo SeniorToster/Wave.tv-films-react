@@ -7,6 +7,8 @@ import styles from './Actors.module.scss';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import ActorItem from './ActorItem/ActorItem';
+import Title from '../Title/Title';
+import NoContent from '../NoContent/NoContent';
 
 function Actors({ kinopoiskId }) {
   const [loading, setLoading] = useState(true);
@@ -31,35 +33,37 @@ function Actors({ kinopoiskId }) {
         <LinearProgress />
       ) : (
         <>
-          <div className={styles.wrapperTitle}>
-            <h2 className={styles.wrapperTitle__title}>Актёры</h2>
-            <p className={styles.wrapperTitle__numActors}>
-              ({actorsList.length})
-            </p>
-          </div>
-          <div className={styles.list}>
-            <Swiper
-              style={{
-                '--swiper-navigation-color': '#e63946',
-                '--swiper-pagination-color': '#e63946',
-              }}
-              spaceBetween={30}
-              slidesPerView={5}
-              slidesPerGroup={5}
-              pagination={{
-                clickable: true,
-              }}
-              navigation={true}
-              modules={[Navigation]}
-              className='mySwiper'
-            >
-              {actorsList.map(actorItem => (
-                <SwiperSlide key={actorItem.staffId}>
-                  <ActorItem actorItem={actorItem} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+          {actorsList.length ? (
+            <>
+              {' '}
+              <Title text={'Актёры'} numbers={actorsList.length} />
+              <div className={styles.list}>
+                <Swiper
+                  style={{
+                    '--swiper-navigation-color': '#e63946',
+                    '--swiper-pagination-color': '#e63946',
+                  }}
+                  spaceBetween={30}
+                  slidesPerView={5}
+                  slidesPerGroup={5}
+                  pagination={{
+                    clickable: true,
+                  }}
+                  navigation={true}
+                  modules={[Navigation]}
+                  className='mySwiper'
+                >
+                  {actorsList.map(actorItem => (
+                    <SwiperSlide key={actorItem.staffId}>
+                      <ActorItem actorItem={actorItem} />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+            </>
+          ) : (
+            <NoContent />
+          )}
         </>
       )}
     </>

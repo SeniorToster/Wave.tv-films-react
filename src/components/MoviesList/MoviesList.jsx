@@ -1,4 +1,5 @@
-import Movie from '../MovieCard/MovieCard';
+import NoContent from '../NoContent/NoContent';
+import Movie from './MovieCard/MovieCard';
 import styles from './MoviesList.module.scss';
 
 function MoviesList({ movies = {}, title }) {
@@ -14,7 +15,7 @@ function MoviesList({ movies = {}, title }) {
           </div>
         </>
       ) : (
-        <h2 className={styles.subTitleNone}>Ничего не нашли</h2>
+        <NoContent />
       )}
     </div>
   );

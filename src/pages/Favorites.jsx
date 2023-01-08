@@ -1,16 +1,11 @@
-import { useContext } from 'react';
-import Back from '../components/Back/Back';
-import Movies from '../components/MoviesList/MoviesList';
-import { MoviesContext } from '../Context';
+import Favorite from '../components/Favorite/Favorite';
+import Layout from '../components/Layout/Layout';
 
 function FavoritesPage() {
-  const { favoritesList } = useContext(MoviesContext);
-
   return (
-    <>
-      <Back />
-      <Movies movies={favoritesList} title={'Избранное'} />
-    </>
+    <Layout>
+      <Favorite />
+    </Layout>
   );
 }
 

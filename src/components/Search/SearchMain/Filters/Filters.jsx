@@ -1,8 +1,8 @@
 import { useEffect, useContext } from 'react';
 import { IoChevronDown } from 'react-icons/io5';
 import { BsFilterLeft } from 'react-icons/bs';
-import { getListCountriesGenders } from '../../../api';
-import { MoviesContext } from '../../../Context';
+import { getListCountriesGenders } from '../../../../api';
+import { MoviesContext } from '../../../../Context/Context';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';

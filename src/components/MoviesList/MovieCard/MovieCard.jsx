@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import FavoriteIcon from '../../FavoriteIcon/FavoriteIcon';
+import FavoriteIcon from '../../Ui/FavoriteIcon/FavoriteIcon';
 import styles from './MovieCard.module.scss';
 
 let country = 'неизвестно';

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { BiRightArrowAlt } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import { getMovie } from '../../../api';
-import { MoviesContext } from '../../../Context';
+import { MoviesContext } from '../../../Context/Context';
 import styles from './MainPoster.module.scss';
 
 function MainPoster() {
@@ -23,6 +23,7 @@ function MainPoster() {
         console.log(error);
         setLoading(false);
       });
+    // eslint-disable-next-line
   }, []);
 
   return (

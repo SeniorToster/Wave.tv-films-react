@@ -1,10 +1,11 @@
 import Home from '../components/Home/Home';
+import Layout from '../components/Layout/Layout';
 
 function HomePage() {
   return (
-    <>
-      <Home />
-    </>
+    <Layout>
+        <Home />
+    </Layout>
   );
 }
 

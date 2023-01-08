@@ -1,5 +1,5 @@
-import NoContent from '../NoContent/NoContent';
-import Title from '../Title/Title';
+import NoContent from '../../Ui/NoContent/NoContent';
+import Title from '../../Ui/Title/Title';
 import styles from './Description.module.scss';
 
 function Description({ text }) {

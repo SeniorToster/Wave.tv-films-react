@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { BsBookmark, BsBookmarkX } from 'react-icons/bs';
-import { MoviesContext } from '../../Context';
+import { MoviesContext } from '../../../Context/Context';
 
 function FavoriteIcon({ movie }) {
   const { kinopoiskId } = movie;

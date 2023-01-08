@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { LinearProgress } from '@mui/material';
-import { getMovieFacts } from '../../api';
+import { getMovieFacts } from '../../../api';
+import NoContent from '../../Ui/NoContent/NoContent';
+import Title from '../../Ui/Title/Title';
 import styles from './Facts.module.scss';
-import Title from '../Title/Title';
-import NoContent from '../NoContent/NoContent';
 
 function Facts({ kinopoiskId }) {
   const [loading, setLoading] = useState(true);
@@ -22,7 +22,7 @@ function Facts({ kinopoiskId }) {
       {loading ? (
         <LinearProgress />
       ) : factsList.length ? (
-        <>
+          <>
           <Title text={'Знаете ли вы, что…'} />
           <ul className={styles.list}>
             {factsList.map(fact => (

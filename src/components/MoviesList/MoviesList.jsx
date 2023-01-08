@@ -1,4 +1,4 @@
-import NoContent from '../NoContent/NoContent';
+import NoContent from '../Ui/NoContent/NoContent';
 import Movie from './MovieCard/MovieCard';
 import styles from './MoviesList.module.scss';
 

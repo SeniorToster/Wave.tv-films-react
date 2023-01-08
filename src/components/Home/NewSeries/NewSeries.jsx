@@ -1,8 +1,8 @@
 import { useContext, useEffect } from 'react';
 import { getResultsSearch } from '../../../api';
-import { MoviesContext } from '../../../Context';
+import { MoviesContext } from '../../../Context/Context';
 import MoviesList from '../../MoviesList/MoviesList';
-import Title from '../../Title/Title';
+import Title from '../../Ui/Title/Title';
 import styles from './NewSeries.module.scss';
 
 const paramsSerial = { yearFrom: 2022, yearTo: 2022, type: 'TV_SERIES' };

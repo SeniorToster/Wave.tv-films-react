@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import { LinearProgress } from '@mui/material';
-import { getMovieActors } from '../../api';
-import styles from './Actors.module.scss';
+import { getMovieActors } from '../../../api';
+import ActorItem from './ActorItem/ActorItem';
+import Title from '../../Ui/Title/Title';
+import NoContent from '../../Ui/NoContent/NoContent';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import ActorItem from './ActorItem/ActorItem';
-import Title from '../Title/Title';
-import NoContent from '../NoContent/NoContent';
+import styles from './Actors.module.scss';
 
 function Actors({ kinopoiskId }) {
   const [loading, setLoading] = useState(true);

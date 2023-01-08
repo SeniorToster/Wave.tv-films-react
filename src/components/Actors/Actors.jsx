@@ -25,8 +25,6 @@ function Actors({ kinopoiskId }) {
     // eslint-disable-next-line
   }, []);
 
-  console.log(actorsList);
-
   return (
     <>
       {loading ? (

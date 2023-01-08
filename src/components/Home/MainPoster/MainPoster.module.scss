@@ -1,0 +1,64 @@
+.wrapper {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  &__info {
+    position: relative;
+    z-index: 2;
+    & > h1 {
+      margin-bottom: 40px;
+      font-size: 38px;
+      width: 50%;
+    }
+    & > p {
+      line-height: 28px;
+      width: 50%;
+      font-size: 18px;
+      margin-bottom: 50px;
+    }
+    & > a {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      background-color: #e63946;
+      padding: 8px 10px;
+      font-weight: 700;
+      border-radius: 8px;
+      font-size: 16px;
+      & > svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+  &__poster {
+    position: absolute;
+    right: 0;
+    top: -100px;
+    z-index: 1;
+    &::after {
+      position: absolute;
+      content: '';
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(
+        90deg,
+        rgb(18, 18, 18),
+        rgba(18, 18, 18, 0.9) 20%,
+        rgba(18, 18, 18, 0.8) 40%,
+        rgba(18, 18, 18, 0.5) 60%,
+        rgba(18, 18, 18, 0.1) 80%
+      );
+    }
+    & > img {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+}

@@ -50,7 +50,11 @@ function MovieCard(props) {
             ) : (
               <h3>
                 Рейтинг:{' '}
-                {ratingKinopoisk ? <span>{ratingKinopoisk}</span> : '–'}
+                {ratingKinopoisk ? (
+                  <span>{ratingKinopoisk.toFixed(1)}</span>
+                ) : (
+                  '–'
+                )}
               </h3>
             )}
             {typeRU && <p>{typeRU}</p>}

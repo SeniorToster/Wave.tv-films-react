@@ -7,7 +7,7 @@ import styles from './TabsContent.module.scss';
 
 function TabsContent({ description, kinopoiskId }) {
   const [tabIndex, setTabIndex] = useState(0);
-  console.log(kinopoiskId);
+
   return (
     <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
       <TabList className={styles.header}>

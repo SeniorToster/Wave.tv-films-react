@@ -54,7 +54,6 @@ function MoviePage() {
     name();
   }, [idMovieParams]);
 
-  console.log(movie);
 
   return (
     <>

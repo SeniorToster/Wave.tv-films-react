@@ -17,8 +17,6 @@ function Facts({ kinopoiskId }) {
     // eslint-disable-next-line
   }, []);
 
-  console.log(factsList);
-
   return (
     <>
       {loading ? (

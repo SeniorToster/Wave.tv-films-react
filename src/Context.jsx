@@ -9,6 +9,7 @@ if (localStorage.favorites) {
 }
 
 const initialState = {
+  moviePosterMain: '505898',
   moviesList: [],
   seriesList: [],
   inputValueSearch: '',

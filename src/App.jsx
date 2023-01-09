@@ -7,6 +7,7 @@ import SearchPage from './pages/Search';
 import WatchPage from './pages/Watch';
 import FavoritesPage from './pages/Favorites';
 import MoviePage from './pages/Movie';
+import Not404Page from './pages/Not404';
 
 function App() {
   const darkTheme = createTheme({
@@ -26,6 +27,7 @@ function App() {
             <Route path='/favorites' element={<FavoritesPage />} />
             <Route path='/film/:idMovieParams' element={<MoviePage />} />
             <Route path='/watch/:idMovieParams' element={<WatchPage />} />
+            <Route path='/*' element={<Not404Page />} />
           </Routes>
         </ContextProvider>
       </BrowserRouter>

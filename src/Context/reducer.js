@@ -115,6 +115,12 @@ export function reducer(state, { type, payload }) {
         ...state,
         loading: payload,
       };
+    case 'CHANGE_OPEN_AUTH':
+      console.log(1);
+      return {
+        ...state,
+        isOpenAuth: !state.isOpenAuth,
+      };
 
     case 'ADD_FAVORITES_LIST': {
       const newFavoriteList = [...state.favoritesList, payload];

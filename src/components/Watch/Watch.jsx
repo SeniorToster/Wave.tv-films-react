@@ -17,9 +17,9 @@ function Watch() {
   }, []);
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <Back />
-      <div className={styles.wrapper} data-kinopoisk={idMovieParams} id='kinobd'></div>
+      <div data-kinopoisk={idMovieParams} id='kinobd'></div>
     </div>
   );
 }

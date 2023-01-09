@@ -23,6 +23,7 @@ const initialState = {
   loading: true,
   favoritesList: favoriteLocal,
   isFirstInstallation: true,
+  isOpenAuth: false
 };
 
 export const ContextProvider = ({ children }) => {
@@ -70,6 +71,10 @@ export const ContextProvider = ({ children }) => {
 
   value.delFavoritesList = idMovie => {
     dispatch({ type: 'DELETE_FAVORITES_LIST', payload: idMovie });
+  };
+
+  value.changeOpenAuth = () => {
+    dispatch({ type: 'CHANGE_OPEN_AUTH'});
   };
 
   return (

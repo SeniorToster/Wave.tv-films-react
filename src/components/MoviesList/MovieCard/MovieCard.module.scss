@@ -1,3 +1,5 @@
+@import '../../../css/_variables';
+
 .wrapper {
   margin-bottom: 20px;
 
@@ -36,12 +38,12 @@
       cursor: pointer;
       width: 30px;
       height: 30px;
-      color: #f1faee;
+      color: $color-text-white;
       opacity: 0;
       scale: 0.5;
       transition: all 0.2s ease-in-out;
       &:hover {
-        color: #e63946;
+        color: $color-red;
         transition: all 0.2s ease-in-out;
       }
     }
@@ -57,36 +59,36 @@
     transition: all 0.2s ease-in-out;
 
     & > h3 {
-      color: #f1faee;
+      color: $color-text-white;
       font-size: 18px;
       font-weight: 700;
       margin-bottom: 6px;
       & > span {
-        color: #e63946;
+        color: $color-red;
       }
     }
 
     & > p {
       font-weight: 400;
-      color: #f1faee99;
+      color: $color-grey;
       font-size: 16px;
       &:not(:last-child) {
         margin-bottom: 4px;
       }
       & > span {
         font-weight: 700;
-        color: #f1faee;
+        color: $color-text-white;
       }
     }
   }
 
   & > p {
-    color: #f1faee;
+    color: $color-text-white;
     word-break: break-word;
     font-size: 18px;
     font-weight: 700;
   }
   & > small {
-    color: #f1faee99;
+    color: $color-grey;
   }
 }

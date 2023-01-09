@@ -1,3 +1,5 @@
+@import '../../css/_variables';
+
 .wrapperInfo {
   display: flex;
   gap: 50px;
@@ -15,23 +17,24 @@
       top: 10px;
       left: 10px;
       padding: 2px 4px;
-      background-color: #e63946;
+      background-color: $color-red;
       border-radius: 8px;
     }
   }
   &__nameMovie {
+    color: $color-text-white;
     font-weight: 700;
     font-size: 36px;
     margin-bottom: 6px;
   }
   &__nameMovieOriginal {
+    color: $color-grey;
     font-weight: 400;
-    opacity: 0.5;
     font-size: 18px;
     margin-bottom: 20px;
   }
   &__icon {
-    background-color: #2e2e2e;
+    background-color: $color-button-grey;
     width: 50px;
     height: 50px;
     display: flex;
@@ -55,7 +58,7 @@
     align-items: center;
     height: 50px;
     padding: 0 25px;
-    background-color: #2e2e2e;
+    background-color: $color-button-grey;
     border-radius: 100px;
     font-weight: 700;
     & > svg {
@@ -80,15 +83,15 @@
     display: block;
     font-size: 16px;
     width: 180px;
-    color: #ffffffaf;
+    color: $color-grey;
   }
   &__value {
     display: block;
     font-size: 16px;
-    color: #ffff;
+    color: $color-text-white;
     &_age {
       font-size: 12px;
-      border: 1px solid #ffff;
+      border: 1px solid $color-text-white;
       padding: 2px;
       border-radius: 4px;
     }

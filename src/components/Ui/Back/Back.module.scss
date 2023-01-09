@@ -1,4 +1,7 @@
+@import '../../../css/_variables';
+
 .wrapper {
+  color: $color-text-white;
   display: flex;
   align-items: center;
   gap: 6px;

@@ -9,7 +9,7 @@ function Footer() {
         <BsGithub />
         GitHub
       </a>
-      <a href='!#'>
+      <a href='/'>
         <TbNoCopyright />
         no Copyright {new Date().getFullYear()}
       </a>

@@ -1,3 +1,5 @@
+@import '../../../../css/_variables';
+
 .wrapperInput {
   display: flex;
   margin-bottom: 10px;
@@ -15,27 +17,27 @@
 }
 
 .input {
-  border: 1px #2e2e2e solid;
+  border: 1px $color-border-grey solid;
   border-right: none;
   border-radius: 8px 0 0 8px;
   outline: none;
-  background-color: #121212;
+  background-color: $color-background;
   font-size: 22px;
   padding: 8px 20px;
   width: 100%;
-  color: #f1faee;
+  color: $color-text-white;
 }
 
 .button {
-  border: 1px #2e2e2e solid;
+  border: 1px $color-border-grey solid;
   border-radius: 0 8px 8px 0;
-  background-color: #1e1e1e;
+  background-color: $color-button-grey;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
   & > svg {
-    color: #f1faee;
+    color: $color-text-white;
     width: 30px;
     height: 30px;
   }

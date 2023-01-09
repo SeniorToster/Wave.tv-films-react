@@ -1,0 +1,8 @@
+@import '_normalize';
+@import '_global'; /* Сброс */
+@import '_variables'; /* Переменные */
+
+.all {
+  color: $color-text-white;
+  text-decoration: underline;
+}

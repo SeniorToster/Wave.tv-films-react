@@ -1,3 +1,5 @@
+@import '../../../css/_variables';
+
 .wrapper {
   position: relative;
   height: 500px;
@@ -10,11 +12,13 @@
     position: relative;
     z-index: 2;
     & > h1 {
+      color: $color-text-white;
       margin-bottom: 40px;
       font-size: 38px;
       width: 50%;
     }
     & > p {
+      color: $color-grey;
       line-height: 28px;
       width: 50%;
       font-size: 18px;
@@ -24,7 +28,8 @@
       display: inline-flex;
       align-items: center;
       gap: 2px;
-      background-color: #e63946;
+      background-color: $color-red;
+      color: $color-text-white;
       padding: 8px 10px;
       font-weight: 700;
       border-radius: 8px;
@@ -32,6 +37,7 @@
       & > svg {
         width: 30px;
         height: 30px;
+        color: $color-text-white;
       }
     }
   }

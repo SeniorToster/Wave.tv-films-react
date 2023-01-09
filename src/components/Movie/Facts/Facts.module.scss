@@ -1,25 +1,17 @@
-.wrapperTitle {
-  display: flex;
-  gap: 10px;
-  align-items: baseline;
-  margin-bottom: 14px;
-  &__title {
-    font-size: 24px;
-    font-weight: 700;
-  }
-}
+@import '../../../css/_variables';
+
 .list {
   margin-bottom: 30px;
 }
 
 .item {
-  color: #ffffffaf;
+  color: $color-grey;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   &:not(:last-child) {
     padding-bottom: 10px;
     margin-bottom: 10px;
-    border-bottom: 1px solid #ffffffaf;
+    border-bottom: 1px solid $color-border-grey;
   }
 }

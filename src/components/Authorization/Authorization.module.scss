@@ -1,3 +1,5 @@
+@import '../../css/_variables';
+
 .background {
   display: flex;
   justify-content: center;
@@ -16,7 +18,8 @@
   position: relative;
   height: 360px;
   width: 360px;
-  background-color: #151515;
+  background-color: $color-background;
+  border: 1px solid $color-border-grey;
   border-radius: 8px;
   &__close {
     position: absolute;
@@ -38,7 +41,7 @@
     width: 226px;
     height: 56px;
     border-radius: 4px;
-    color: white;
-    background-color: #e63946;
+    color: $color-text-white;
+    background-color: $color-red;
   }
 }

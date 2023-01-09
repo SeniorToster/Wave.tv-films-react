@@ -1,5 +1,7 @@
+@import '../../../css/_variables';
+
 .description {
-  color: #ffffffaf;
+  color: $color-grey;
   font-weight: 400;
   width: 100%;
   font-size: 16px;

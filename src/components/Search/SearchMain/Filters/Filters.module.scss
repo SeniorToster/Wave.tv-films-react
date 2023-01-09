@@ -1,3 +1,5 @@
+@import '../../../../css/_variables';
+
 .accordionText {
   display: flex;
   align-items: center;
@@ -5,13 +7,13 @@
   & > p {
     font-weight: 700;
     font-size: 18px;
-    color: #f1faee;
+    color: $color-text-white;
   }
 
   & svg {
     width: 28px;
     height: 28px;
-    color: #f1faee;
+    color: $color-text-white;
   }
 }
 .wrapper {

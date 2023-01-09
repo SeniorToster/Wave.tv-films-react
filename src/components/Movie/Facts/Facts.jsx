@@ -22,7 +22,7 @@ function Facts({ kinopoiskId }) {
       {loading ? (
         <LinearProgress />
       ) : factsList.length ? (
-          <>
+        <>
           <Title text={'Знаете ли вы, что…'} />
           <ul className={styles.list}>
             {factsList.map(fact => (

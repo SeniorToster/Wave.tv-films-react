@@ -1,3 +1,5 @@
+@import '../../../../css/_variables';
+
 .wrapper {
   &__img {
     object-fit: cover;
@@ -8,10 +10,10 @@
   }
   &__name {
     font-weight: 700;
-    color: white;
+    color: $color-text-white;
   }
   &__desc {
     font-size: 12px;
-    color: #ffffffaf;
+    color: $color-grey;
   }
 }

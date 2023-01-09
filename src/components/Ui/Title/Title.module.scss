@@ -1,14 +1,17 @@
+@import '../../../css/_variables';
+
 .wrapperTitle {
   display: flex;
   gap: 10px;
   align-items: baseline;
   margin-bottom: 14px;
   &__title {
+    color: $color-text-white;
     font-size: 24px;
     font-weight: 700;
   }
   &__numActors {
-    color: #ffffffaf;
+    color: $color-grey;
     font-size: 20px;
   }
 }

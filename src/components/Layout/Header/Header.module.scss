@@ -18,11 +18,6 @@
       font-size: 26px;
       & span {
         color: $color-red;
-        & sup {
-          font-weight: 400;
-          padding-left: 6px;
-          font-size: 10px;
-        }
       }
     }
   }
@@ -36,5 +31,23 @@
   &__wrapperIcons {
     display: flex;
     gap: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .bar {
+    justify-content: center;
+    margin-bottom: 20px;
+    &__wrapperIcons {
+      padding: 10px;
+      width: 100%;
+      border-top: 1px solid $color-border-grey;
+      background-color: $color-background;
+      display: flex;
+      justify-content: space-around;
+      position: fixed;
+      top: calc(100vh - 58px);
+      z-index: 10;
+    }
   }
 }

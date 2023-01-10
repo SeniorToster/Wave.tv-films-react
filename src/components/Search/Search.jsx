@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { LinearProgress } from '@mui/material';
 import { getPremieres, getResultsSearch } from '../../api';
 import { MoviesContext } from '../../Context/Context';
@@ -7,19 +7,21 @@ import SearchMain from './SearchMain/SearchMain';
 import Back from '../Ui/Back/Back';
 
 function Search() {
-  const { searchQuery, moviesList, loading, changeLoading, updateMoviesList } =
+  const [loading, setLoading] = useState(true);
+  const { searchQuery, moviesList, updateMoviesList } =
     useContext(MoviesContext);
 
   useEffect(() => {
     getPremieres()
       .then(json => {
         updateMoviesList(json.items);
-        changeLoading(false);
+        setLoading(false);
       })
-      .catch(err => {
-        console.log(err);
-        changeLoading(false);
+      .catch(error => {
+        console.log(error);
+        setLoading(false);
       });
+
     // eslint-disable-next-line
   }, []);
 
@@ -31,12 +33,12 @@ function Search() {
     Object.keys(parens).forEach(key => {
       if (!parens[key]) delete parens[key];
     });
-    changeLoading(true);
+    setLoading(true);
 
     getResultsSearch(parens)
       .then(json => {
         updateMoviesList(json.items);
-        changeLoading(false);
+        setLoading(false);
       })
       .catch(err => console.log(err));
   };

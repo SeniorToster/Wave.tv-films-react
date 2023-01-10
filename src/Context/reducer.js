@@ -110,11 +110,6 @@ export function reducer(state, { type, payload }) {
         ...state,
         seriesList: payload,
       };
-    case 'CHANGE_LOADING':
-      return {
-        ...state,
-        loading: payload,
-      };
     case 'CHANGE_OPEN_AUTH':
       console.log(1);
       return {

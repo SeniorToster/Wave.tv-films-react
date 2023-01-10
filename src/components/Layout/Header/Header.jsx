@@ -14,10 +14,7 @@ function Header() {
         <BsFilm />
         <p>
           wave.
-          <span>
-            tv
-            <sup>beta 0.8</sup>
-          </span>
+          <span>tv</span>
         </p>
       </Link>
       <div className={styles.bar__wrapperIcons}>

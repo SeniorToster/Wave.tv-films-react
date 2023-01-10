@@ -68,3 +68,65 @@
     }
   }
 }
+
+@media (max-width: 1080px) {
+  .wrapper {
+    height: 500px;
+    &__info {
+      & > h1 {
+        width: 80%;
+      }
+      & > p {
+        width: 80%;
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .wrapper {
+    padding-left: 15px;
+    &__info {
+      & > h1 {
+        width: 80%;
+      }
+      & > p {
+        width: 80%;
+      }
+    }
+    &__poster {
+      top: 100px;
+      &::after {
+        position: absolute;
+        content: '';
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(18, 18, 18, 0.9);
+        scale: 1.5;
+      }
+      & > img {
+        object-fit: cover;
+        width: 100%;
+        scale: 1.5;
+      }
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .wrapper {
+    padding: 0 15px;
+    &__info {
+      & > h1 {
+        width: 100%;
+        font-size: 30px;
+      }
+      & > p {
+        width: 100%;
+        font-size: 14px;
+      }
+    }
+  }
+}

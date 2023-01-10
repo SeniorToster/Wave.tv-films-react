@@ -27,7 +27,7 @@ function Filters() {
     handleSelectAge,
     handleSelectRating,
   } = useContext(MoviesContext);
-
+  const isMedia = true ? { width: 250 } : { width: 180 };
   useEffect(() => {
     getListCountriesGenders()
       .then(json => addListCountriesGenders(json))
@@ -50,28 +50,28 @@ function Filters() {
       <AccordionDetails>
         <div className={styles.wrapper}>
           <Autocomplete
-            sx={{ width: 250 }}
+            sx={isMedia}
             inputValue={inputValueGenre}
             onInputChange={handleSelectGenre}
             options={genres}
             renderInput={params => <TextField {...params} label='Жанр' />}
           />
           <Autocomplete
-            sx={{ width: 250 }}
+            sx={isMedia}
             inputValue={inputValueCountry}
             onInputChange={handleSelectCountry}
             options={countries}
             renderInput={params => <TextField {...params} label='Страна' />}
           />
           <Autocomplete
-            sx={{ width: 250 }}
+            sx={isMedia}
             inputValue={inputValueAge}
             onInputChange={handleSelectAge}
             options={ages}
             renderInput={params => <TextField {...params} label='Год' />}
           />
           <Autocomplete
-            sx={{ width: 250 }}
+            sx={isMedia}
             inputValue={inputValueRating}
             onInputChange={handleSelectRating}
             options={rating}

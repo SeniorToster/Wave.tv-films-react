@@ -20,10 +20,9 @@ const initialState = {
   genres: [],
   countries: [],
   searchQuery: {},
-  loading: true,
   favoritesList: favoriteLocal,
   isFirstInstallation: true,
-  isOpenAuth: false
+  isOpenAuth: false,
 };
 
 export const ContextProvider = ({ children }) => {
@@ -53,10 +52,6 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: 'SET_SEARCH', payload: e });
   };
 
-  value.changeLoading = change => {
-    dispatch({ type: 'CHANGE_LOADING', payload: change });
-  };
-
   value.updateMoviesList = newMovies => {
     dispatch({ type: 'SET_MOVIES', payload: newMovies });
   };
@@ -69,12 +64,16 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: 'ADD_FAVORITES_LIST', payload: movieItem });
   };
 
+  value.addMovie = movieItem => {
+    dispatch({ type: 'ADD_MOVIE', payload: movieItem });
+  };
+
   value.delFavoritesList = idMovie => {
     dispatch({ type: 'DELETE_FAVORITES_LIST', payload: idMovie });
   };
 
   value.changeOpenAuth = () => {
-    dispatch({ type: 'CHANGE_OPEN_AUTH'});
+    dispatch({ type: 'CHANGE_OPEN_AUTH' });
   };
 
   return (

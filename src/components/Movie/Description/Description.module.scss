@@ -6,4 +6,11 @@
   width: 100%;
   font-size: 16px;
   line-height: 26px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 520px) {
+  .description {
+    padding: 0 15px;
+  }
 }

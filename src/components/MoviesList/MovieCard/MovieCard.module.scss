@@ -5,7 +5,8 @@
 
   &__poster {
     position: relative;
-    &:hover > .wrapper__icons > svg {
+
+    &:hover > .wrapper__icons {
       opacity: 1;
       scale: 1;
       transition: all 0.2s ease-in-out;
@@ -30,17 +31,19 @@
   }
 
   &__icons {
+    position: absolute;
+    z-index: 3;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+    opacity: 0;
+    scale: 0.5;
+    width: 30px;
+    height: 30px;
     & > svg {
-      position: absolute;
-      z-index: 3;
-      top: 8px;
-      right: 8px;
-      cursor: pointer;
-      width: 30px;
-      height: 30px;
+      width: 100%;
+      height: 100%;
       color: $color-text-white;
-      opacity: 0;
-      scale: 0.5;
       transition: all 0.2s ease-in-out;
       &:hover {
         color: $color-red;
@@ -90,5 +93,82 @@
   }
   & > small {
     color: $color-grey;
+  }
+}
+
+@media (max-width: 520px) {
+  .wrapper {
+    &__poster {
+      &::after {
+        position: absolute;
+        content: '';
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        background: linear-gradient(
+          0deg,
+          rgba(18, 18, 18, 0.9) 30%,
+          rgba(18, 18, 18, 0.8) 40%,
+          rgba(18, 18, 18, 0.5) 60%,
+          rgba(18, 18, 18, 0.1) 80%
+        );
+        border-radius: 8px;
+      }
+      & > img {
+        position: relative;
+        min-width: 140px;
+        min-height: 240px;
+      }
+      &:hover > img {
+        transition: none;
+        filter: none;
+        scale: 1;
+      }
+    }
+    &__icons {
+      padding: 8px;
+      width: 42px;
+      height: 42px;
+      background-color: rgba($color: $color-button-grey, $alpha: 0.8);
+      border-radius: 100px;
+      opacity: 1;
+      scale: 1;
+      top: 4px;
+      right: 4px;
+    }
+
+    &__hoverInfo {
+      bottom: 4px;
+      left: 4px;
+      opacity: 1;
+      scale: 1;
+      & > h3 {
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+
+      & > p {
+        font-weight: 700;
+        font-size: 10px;
+        &:not(:last-child) {
+          margin-bottom: 2px;
+        }
+      }
+    }
+
+    & > p {
+      color: $color-text-white;
+      word-break: break-word;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    & > small {
+      display: inline-block;
+      color: $color-grey;
+      transform: translateY(-6px);
+      font-size: 8px;
+    }
   }
 }

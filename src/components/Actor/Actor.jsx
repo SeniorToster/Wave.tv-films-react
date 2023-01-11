@@ -5,12 +5,21 @@ import { getActor } from '../../api';
 import Back from '../Ui/Back/Back';
 import NoContent from '../Ui/NoContent/NoContent';
 import ActorInfo from './ActorInfo/ActorInfo';
+import TabsContent from '../Ui/TabsContent/TabsContent';
+import ActorFacts from './ActorFacts/ActorFacts';
+import ActorMovies from './ActorMovies/ActorMovies';
 
 function Actor() {
   const [loading, setLoading] = useState(true);
   const [actor, setActor] = useState([]);
   const { idActorParams } = useParams();
-
+  const componentTabs = [
+    { name: 'Факты', component: <ActorFacts factsList={actor.facts} /> },
+    {
+      name: 'Актёр фильмов',
+      component: <ActorMovies moviesList={actor.films} />,
+    },
+  ];
   useEffect(() => {
     getActor(idActorParams)
       .then(json => {
@@ -20,7 +29,7 @@ function Actor() {
         console.log(error);
       })
       .finally(() => setLoading(false));
-    
+
     // eslint-disable-next-line
   }, []);
 
@@ -32,6 +41,7 @@ function Actor() {
         <>
           <Back />
           <ActorInfo actor={actor} />
+          <TabsContent components={componentTabs} />
         </>
       ) : (
         <NoContent />

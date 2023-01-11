@@ -6,8 +6,6 @@ import 'swiper/css/navigation';
 
 function SwiperMain({ itemList, children }) {
 
-
-  
   return (
     <Swiper
       style={{

@@ -4,8 +4,8 @@ import { getMovieActors } from '../../../api';
 import ActorItem from './ActorItem/ActorItem';
 import Title from '../../Ui/Title/Title';
 import NoContent from '../../Ui/NoContent/NoContent';
-import styles from './Actors.module.scss';
 import SwiperMain from '../../Ui/Swiper/Swiper';
+import styles from './Actors.module.scss';
 
 function Actors({ kinopoiskId }) {
   const [loading, setLoading] = useState(true);

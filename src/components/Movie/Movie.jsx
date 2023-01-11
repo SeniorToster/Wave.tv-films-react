@@ -3,15 +3,23 @@ import { useParams } from 'react-router-dom';
 import { LinearProgress } from '@mui/material';
 import { getMovie, getMovieBoxOffice } from '../../api';
 import Back from '../Ui/Back/Back';
-import TabsContent from './TabsContent/TabsContent';
 import MovieInfo from './MovieInfo/MovieInfo';
 import NoContent from '../Ui/NoContent/NoContent';
+import Description from './Description/Description';
+import Actors from './Actors/Actors';
+import Facts from './Facts/Facts';
+import TabsContent from '../Ui/TabsContent/TabsContent';
 
 function Movie() {
   const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState({});
   const [office, setOffice] = useState({});
   const { idMovieParams } = useParams();
+  const componentTabs = [
+    { name: 'Описание', component: <Description text={movie.description} /> },
+    { name: 'Актёры', component: <Actors kinopoiskId={movie.kinopoiskId} /> },
+    { name: 'Факты', component: <Facts kinopoiskId={movie.kinopoiskId} /> },
+  ];
 
   useEffect(() => {
     (async () => {
@@ -46,10 +54,7 @@ function Movie() {
         <>
           <Back />
           <MovieInfo movie={movie} office={office} />
-          <TabsContent
-            description={movie.description}
-            kinopoiskId={movie.kinopoiskId}
-          />
+          <TabsContent components={componentTabs} />
         </>
       ) : (
         <NoContent />

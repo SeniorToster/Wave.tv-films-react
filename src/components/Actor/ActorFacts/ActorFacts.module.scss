@@ -1,0 +1,23 @@
+@import '../../../css/_variables';
+
+.list {
+  margin-bottom: 30px;
+}
+
+.item {
+  color: $color-grey;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  &:not(:last-child) {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid $color-border-grey;
+  }
+}
+
+@media (max-width: 520px) {
+  .list {
+    padding: 0 15px;
+  }
+}

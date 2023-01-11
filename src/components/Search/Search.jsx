@@ -44,7 +44,6 @@ function Search() {
       .then(json => {
         setMoviesList([...moviesList, ...json.items]);
         setCurrentPage(prevState => prevState + 1);
-        console.log(moviesList);
       })
       .catch(err => console.log(err));
   };
@@ -65,9 +64,6 @@ function Search() {
   }, []);
 
   useEffect(() => {
-    console.log(currentPage);
-    console.log(totalPages);
-
     if (inView && currentPage <= totalPages) {
       handleLazyPage();
     }

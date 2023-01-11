@@ -20,6 +20,7 @@ function Actor() {
         console.log(error);
       })
       .finally(() => setLoading(false));
+    
     // eslint-disable-next-line
   }, []);
 

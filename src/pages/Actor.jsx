@@ -1,3 +1,4 @@
+
 import Actor from '../components/Actor/Actor';
 import Layout from '../components/Layout/Layout';
 

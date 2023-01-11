@@ -21,7 +21,6 @@ const initialState = {
   countries: [],
   searchQuery: {},
   favoritesList: favoriteLocal,
-  isFirstInstallation: true,
   isOpenAuth: false,
 };
 
@@ -74,6 +73,10 @@ export const ContextProvider = ({ children }) => {
 
   value.changeOpenAuth = () => {
     dispatch({ type: 'CHANGE_OPEN_AUTH' });
+  };
+
+  value.defaultSearchQuery = () => {
+    dispatch({ type: 'DEFAULT_SEARCH_QUERY' });
   };
 
   return (

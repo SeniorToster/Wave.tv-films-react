@@ -137,6 +137,8 @@ export function reducer(state, { type, payload }) {
         favoritesList: newFavoriteList,
       };
     }
+    case 'DEFAULT_SEARCH_QUERY':
+      return { ...state, searchQuery: {} };
     default:
       return state;
   }

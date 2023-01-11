@@ -2,15 +2,14 @@ import NoContent from '../Ui/NoContent/NoContent';
 import Movie from './MovieCard/MovieCard';
 import styles from './MoviesList.module.scss';
 
-function MoviesList({ movies = {}, title }) {
+function MoviesList({ movies = {} }) {
   return (
     <div>
       {movies.length ? (
         <>
-          <h2 className={styles.title}>{title}</h2>
           <div className={styles.wrapper}>
-            {movies.map(movie => (
-              <Movie key={movie.kinopoiskId} {...movie} />
+            {movies.map((movie, index) => (
+              <Movie key={index + Math.random()} {...movie} />
             ))}
           </div>
         </>

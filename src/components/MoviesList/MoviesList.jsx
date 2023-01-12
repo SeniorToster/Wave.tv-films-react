@@ -9,7 +9,7 @@ function MoviesList({ movies = {} }) {
         <>
           <div className={styles.wrapper}>
             {movies.map((movie, index) => (
-              <Movie key={index + Math.random()} {...movie} />
+              <Movie key={index} {...movie} />
             ))}
           </div>
         </>

@@ -54,7 +54,7 @@ function MovieCard(props) {
                 '–'
               )}
             </h3>
-            ){typeRU && <p>{typeRU}</p>}
+            {typeRU && <p>{typeRU}</p>}
             <p>
               Страна: <span>{country}</span>
             </p>

@@ -3,10 +3,12 @@ import { LinearProgress } from '@mui/material';
 import { getResultsSearch } from '../../api';
 import { MoviesContext } from '../../Context/Context';
 import { useInView } from 'react-intersection-observer';
+import queryString from 'query-string';
 import Movies from '../MoviesList/MoviesList';
 import SearchMain from './SearchMain/SearchMain';
 import Back from '../Ui/Back/Back';
 import Title from '../Ui/Title/Title';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Search() {
   const [loading, setLoading] = useState(true);
@@ -15,15 +17,19 @@ function Search() {
   const [moviesList, setMoviesList] = useState([]);
   const { ref, inView } = useInView({ rootMargin: '300px' });
   const { searchQuery, defaultSearchQuery } = useContext(MoviesContext);
+  const { pathname, search } = useLocation();
+  const push = useNavigate();
 
   const handleSearch = e => {
     e.preventDefault();
     setLoading(true);
-    const parens = { ...searchQuery, page: 1 };
+    const parens = { ...searchQuery };
 
     Object.keys(parens).forEach(key => {
       if (!parens[key]) delete parens[key];
     });
+    const parsed = queryString.stringify(parens);
+    push({ pathname, search: parsed });
 
     getResultsSearch(parens)
       .then(json => {
@@ -49,7 +55,9 @@ function Search() {
   };
 
   useEffect(() => {
-    getResultsSearch()
+    const parsed = queryString.parse(search);
+
+    getResultsSearch(parsed)
       .then(json => {
         setMoviesList(json.items);
         setTotalPages(json.totalPages);
@@ -58,11 +66,10 @@ function Search() {
       .finally(() => {
         setLoading(false);
       });
-window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
     return defaultSearchQuery();
     // eslint-disable-next-line
   }, []);
-
 
   useEffect(() => {
     if (inView && currentPage <= totalPages) {

@@ -4,8 +4,27 @@ import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-function SwiperMain({ itemList, children }) {
+const breakpoints = {
+  300: {
+    slidesPerView: 2,
+    slidesPerGroup: 2,
+    spaceBetween: 10,
+  },
+  640: {
+    slidesPerView: 3,
+    slidesPerGroup: 3,
+  },
+  860: {
+    slidesPerView: 4,
+    slidesPerGroup: 4,
+  },
+  1080: {
+    slidesPerView: 5,
+    spaceBetween: 30,
+  },
+};
 
+function SwiperMain({ itemList, children }) {
   return (
     <Swiper
       style={{
@@ -20,6 +39,7 @@ function SwiperMain({ itemList, children }) {
       }}
       navigation={true}
       modules={[Navigation]}
+      breakpoints={breakpoints}
       className='mySwiper'
     >
       {itemList.map((item, index) => (

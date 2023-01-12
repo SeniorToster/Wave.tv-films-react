@@ -1,0 +1,11 @@
+@import '../../../css/_variables';
+
+.wrapper {
+  margin-bottom: 15px;
+  &__item {
+    padding: 15px 0;
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-border-grey;
+    }
+  }
+}

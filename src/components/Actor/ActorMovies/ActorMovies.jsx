@@ -1,18 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Title from '../../Ui/Title/Title';
+import ActorMovie from './ActorMovie/ActorMovie';
+import styles from './ActorMovies.module.scss';
 
 function ActorMovies({ moviesList }) {
   return (
     <>
       <Title text={'Актёр фильмов'} />
-      <li>
+      <li className={styles.wrapper}>
         {moviesList
           .filter(movie => movie.professionKey === 'ACTOR')
-          .map(movie => (
-            <ul>
-              <Link to={`/film/${movie.filmId}`}>
-                {movie.nameRu}</Link>
+          .map((movie, index) => (
+            <ul key={index} className={styles.wrapper__item}>
+              <ActorMovie movie={movie} />
             </ul>
           ))}
       </li>

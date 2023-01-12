@@ -27,11 +27,11 @@ function MainPoster() {
   }, []);
 
   return (
-    <>
+    <div className={styles.wrapper}>
       {loading ? (
         <LinearProgress />
       ) : (
-        <div className={styles.wrapper}>
+        <>
           <div className={styles.wrapper__poster}>
             <img src={posterUrl} alt='' />
           </div>
@@ -46,9 +46,9 @@ function MainPoster() {
               <BiRightArrowAlt />
             </Link>
           </div>
-        </div>
+        </>
       )}
-    </>
+    </div>
   );
 }
 

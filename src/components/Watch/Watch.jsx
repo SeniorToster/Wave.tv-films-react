@@ -10,7 +10,7 @@ function Watch() {
     const script = document.createElement('script');
     script.src = '/player_.js';
     document.body.appendChild(script);
-
+    window.scrollTo(0, 0);
     return () => {
       script.remove();
     };

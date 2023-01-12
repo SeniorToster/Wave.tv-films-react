@@ -1,7 +1,5 @@
-import { Link } from 'react-router-dom';
-import { BsFillCaretRightFill } from 'react-icons/bs';
-import FavoriteIcon from '../../Ui/FavoriteIcon/FavoriteIcon';
 import styles from './MovieInfo.module.scss';
+import Button from '../../Ui/Button/Button';
 
 function MovieInfo({ movie, office }) {
   const { budget, world } = office;
@@ -36,16 +34,8 @@ function MovieInfo({ movie, office }) {
           </h2>
         )}
         <div className={styles.wrapperInfo__buttons}>
-          <Link
-            className={styles.wrapperInfo__watchButton}
-            to={`/watch/${kinopoiskId}`}
-          >
-            <BsFillCaretRightFill />
-            Смотреть
-          </Link>
-          <div title='Буду смотреть' className={styles.wrapperInfo__icon}>
-            <FavoriteIcon movie={movie} />
-          </div>
+          <Button type='WATCH' filmId={kinopoiskId} />
+          <Button type='FAVORITE' movie={movie} />
         </div>
         <div className={styles.aboutMovie}>
           <h3 className={styles.aboutMovie__title}>

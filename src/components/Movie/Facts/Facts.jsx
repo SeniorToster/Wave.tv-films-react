@@ -27,6 +27,7 @@ function Facts({ kinopoiskId }) {
           <ul className={styles.list}>
             {factsList.map(fact => (
               <li
+                key={fact.text}
                 className={styles.item}
                 dangerouslySetInnerHTML={{ __html: fact.text }}
               ></li>

@@ -58,10 +58,11 @@ function Search() {
       .finally(() => {
         setLoading(false);
       });
-
+window.scrollTo(0, 0);
     return defaultSearchQuery();
     // eslint-disable-next-line
   }, []);
+
 
   useEffect(() => {
     if (inView && currentPage <= totalPages) {

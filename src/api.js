@@ -2,7 +2,7 @@ const url = 'https://kinopoiskapiunofficial.tech';
 const fetchParameters = {
   method: 'GET',
   headers: {
-    'X-API-KEY': 'fcd897c6-5cf1-4338-a96b-58135de60eff',
+    'X-API-KEY': '2676ce67-6879-4057-a2a9-4382044f521f',
     'Content-Type': 'application/json',
   },
 };
